@@ -89,14 +89,17 @@
   .header {
     position: fixed;
     top: 0; left: 0; right: 0;
-    background: rgba(241, 232, 211, 0.88);
+    background: rgba(241, 232, 211, 0.92);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(139,111,71,0.15);
     z-index: 100;
     padding: 1rem 2rem;
     transition: all 0.4s;
   }
-  .header.scrolled { padding: 0.6rem 2rem; }
+  .header.scrolled { 
+    padding: 0.6rem 2rem;
+    box-shadow: 0 2px 20px rgba(28,25,20,0.08);
+  }
   .header-inner {
     max-width: 1400px;
     margin: 0 auto;
@@ -112,7 +115,10 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-decoration: none;
+    transition: color 0.3s;
   }
+  .logo:hover { color: var(--bronze); }
   .logo-sub {
     font-size: 0.7rem;
     color: var(--bronze);
@@ -131,14 +137,15 @@
     color: var(--stone);
     text-decoration: none;
     text-transform: uppercase;
-    transition: color 0.3s;
+    transition: all 0.3s;
     position: relative;
+    padding: 0.5rem 0;
   }
   .nav a:hover { color: var(--bronze); }
   .nav a::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     right: 0;
     width: 0;
     height: 1px;
@@ -180,6 +187,7 @@
       padding: 2rem;
       gap: 1.5rem;
       border-bottom: 1px solid rgba(139,111,71,0.2);
+      box-shadow: 0 10px 30px rgba(28,25,20,0.1);
     }
   }
 
@@ -220,12 +228,13 @@
     animation: fadeUp 1s ease-out 0.4s forwards;
   }
   .hero-text .intro {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: rgba(42, 36, 25, 0.75);
     max-width: 520px;
     margin-bottom: 2.5rem;
     opacity: 0;
     animation: fadeUp 1s ease-out 0.6s forwards;
+    line-height: 1.9;
   }
   .hero-text .subtitle {
     font-size: 0.85rem;
@@ -316,6 +325,7 @@
     font-size: 1.05rem;
     max-width: 620px;
     margin-bottom: 3rem;
+    line-height: 1.9;
   }
 
   .divider {
@@ -399,6 +409,7 @@
   .book-info p {
     font-size: 0.9rem;
     color: rgba(42, 36, 25, 0.7);
+    line-height: 1.8;
   }
 
   /* ============ ABOUT ============ */
@@ -532,6 +543,7 @@
   .timeline-desc {
     color: rgba(42, 36, 25, 0.7);
     font-size: 0.95rem;
+    line-height: 1.8;
   }
 
   /* Influences */
@@ -812,6 +824,7 @@
     color: rgba(241,232,211,0.75);
     font-size: 1.05rem;
     position: relative;
+    line-height: 1.9;
   }
   .newsletter-perks {
     display: flex;
@@ -924,6 +937,7 @@
     color: rgba(42, 36, 25, 0.7);
     font-size: 0.9rem;
     margin-bottom: 1.25rem;
+    line-height: 1.8;
   }
   .community-link {
     font-size: 0.75rem;
@@ -1238,10 +1252,10 @@
 <!-- ============ HEADER ============ -->
 <header class="header" id="header">
   <div class="header-inner">
-    <div class="logo">
+    <a href="#home" class="logo">
       علی رضائی
       <span class="logo-sub">AR</span>
-    </div>
+    </a>
     <nav class="nav" id="nav">
       <a href="#home">خانه</a>
       <a href="#about">درباره</a>
@@ -1267,9 +1281,8 @@
         <div class="label">۱۴۰۵ · تیرماه</div>
         <h1>علی رضائی</h1>
         <p class="intro">
-          داستان‌هایی که در سکوت خاک خورده‌اند، چشم به راه کاشف خود.
-          نویسنده‌ی رمان‌هایی که تاریخ را نه روایت، بلکه بازسازی می‌کنند —
-          از لابه‌لای نامه‌های هرگز ارسال‌شده و انجمن‌های فراموش‌شده.
+          علی رضائی، زاده‌ی شاهرود. نویسنده‌ی رمان‌های «میراث سکوت» و «آن سوی خاموشی».
+          مهندس صنایع و مدیر کسب‌وکار، اما در عمق، نگهبان داستان‌هایی که تاریخ در سکوت فرو برده است.
         </p>
         <div class="subtitle">نویسنده · پژوهشگر · نگهبان داستان‌های فراموش‌شده</div>
       </div>
@@ -1295,8 +1308,8 @@
           <div class="book-cover">میراث<br>سکوت</div>
           <div class="book-info">
             <h3>میراث سکوت</h3>
-            <div class="genre">رمان معمایی تاریخی</div>
-            <p>داستان دست‌نوشته‌ای گمشده از قرن نوزدهم که سکوت یک خاندان را می‌شکند. سفری از تبریز تا استانبول، در پی حقیقتی که قرن‌ها پنهان مانده است.</p>
+            <div class="genre">تریلر تاریخی · معمایی</div>
+            <p>آرش، جوانی سی‌وچندساله، بیشتر عمر خود را در لندن و با هویتی مخفی سپری کرده است. ناگهان خود را در مرکز ماجرایی می‌بیند که گروه‌های مخفی مختلفی به دنبال سر در آوردن از آن هستند. سفری پرماجرا از لندن به سوی تهران، از مسیر استانبول — نه تنها سفری جغرافیایی، بلکه سفری تاریخی و روحانی. در این مسیر، لایه به لایه از رازی باستانی برایش گشوده می‌شود: از دوران ساسانیان و مزدک پیامبر، تا زکریای رازی، و در نهایت ملکم خان ناظم‌الدوله در دوران قاجار.</p>
           </div>
         </div>
 
@@ -1304,8 +1317,8 @@
           <div class="book-cover upcoming">آن سوی<br>خاموشی</div>
           <div class="book-info">
             <h3>آن سوی خاموشی</h3>
-            <div class="genre">تریلر سیاسی · به‌زودی</div>
-            <p>پروژه‌ی آینده‌ی نویسنده؛ روایتی از قدرت، خیانت و حقیقتی که نباید کشف می‌شد. منتشر شده در انجمن‌های ادبی پیش از انتشار عمومی.</p>
+            <div class="genre">درام تاریخی · به‌زودی</div>
+            <p>مرد میانسالی در ایرانِ پیش از انقلاب، زندگی آرام و شادی را در کنار همسر و دخترش سپری می‌کند. اما ناگهان، در طوفانی از اتفاقات، همسر و دخترش را از دست می‌دهد. حالا، در ابتدای انقلاب اسلامی، در میانه‌ی آشوبی که کشور را در خود بلعیده، او تنها مانده است. اما تسلیم نمی‌شود. در مسیری پر پیچ‌وخم، به دنبال ردی از آن دو می‌گردد — و به دنبال کسانی که این بلا را به سر زندگی‌اش آوردند.</p>
           </div>
         </div>
       </div>
@@ -1321,9 +1334,14 @@
       <div class="about-grid">
         <div class="about-portrait reveal">ع</div>
         <div class="about-text reveal">
-          <p>علی رضائی در تهران زاده شد و در رشته‌ی تاریخ و ادبیات تطبیقی تحصیل کرد. آثار او سکوت‌های تاریخ ایران را کاوش می‌کند — نامه‌هایی که هرگز ارسال نشدند، انجمن‌هایی که ناپدید شدند، و دست‌نوشته‌هایی که به‌طور تصادفی از طوفان‌ها جان سالم به در بردند.</p>
-          <p>او زمان خود را میان نوشتن، پژوهش در بایگانی‌های ملی، و سفر در امتداد جاده‌ی ابریشم قدیم تقسیم می‌کند. هر رمان او از ترکیبی از اسناد واقعی و بازسازی‌های تخیلی شکل می‌گیرد — چنان‌که مرز میان تاریخ و داستان محو می‌شود.</p>
-          <p>باور او این است که رمان، روایتی از گذشته نیست، بلکه بازسازی ویرانه‌ای است که در آن هر سنگ، هر ترک، و هر سایه معنایی پنهان دارد.</p>
+          <p>علی رضائی در سال ۱۳۶۸ در شاهرود زاده شد. کودکی و نوجوانی‌اش در شهری گذشت که خود، لایه‌هایی از تاریخ را در دل خود جای داده است — شهری در مسیر جاده‌ی ابریشم، با پیشینه‌ای که تا هزاران سال پیش بازمی‌گردد.</p>
+          <p>از سال ۱۳۸۷، راهی دانشگاه شهید باهنر کرمان شد و در رشته‌ی مهندسی صنایع به تحصیل پرداخت. اما در همان سال‌های دانشجویی، چیزی دیگر در جانش جوانه می‌زد: عشق به ادبیات و داستان. متن‌های زیادی نوشت — داستان‌های کوتاه، یادداشت‌ها، و نخستین تلاش‌هایش برای نوشتن رمان. یکی از این تلاش‌ها، داستانی ناتمام بود که سال‌ها بعد، به رمان دوم او، «آن سوی خاموشی»، تبدیل می‌شد.</p>
+          <p>در سال ۱۳۹۲، برای ادامه‌ی تحصیل در مقطع کارشناسی ارشد مدیریت کسب‌وکار به دانشگاه پیام نور رفت و مدرک خود را دریافت کرد. سال بعد، در ۱۳۹۳، استخدام بانک سپه شهرستان شاهرود شد و اکنون در سرپرستی بانک سپه منطقه سمنان مشغول به فعالیت است.</p>
+          <p>اما در پسِ این زندگی رسمی، زندگی دیگری در جریان بود — زندگی‌ای که با مطالعه‌ی تاریخ ایران، تاریخ ادیان، و آثار نویسندگانی چون دن براون و جی.کی. رولینگ شکل گرفته بود. خواندن چندباره‌ی داستان‌های این نویسندگان در دوران نوجوانی، شاکله‌ی ذهنی نویسندگی او را ساخت. فیلم‌ها و سریال‌هایی از سه‌گانه‌ی پدرخوانده تا Gravity Falls، Avatar: The Legend of Korra، Better Call Saul و Black Sails نیز بر ذهن او تأثیر عمیقی گذاشتند — هر کدام، درس‌هایی درباره‌ی روایت، شخصیت‌پردازی، و ساختار داستان.</p>
+          <p>از نوجوانی، علاقه‌ی فراوانی به مطالعه‌ی آثار تاریخی، به‌ویژه تاریخ ادیان، داشت. بیشتر وقت خود را صرف مطالعه در خصوص تاریخ ایران و دیگر نقاط جهان می‌کرد — از ساسانیان و مزدک تا دوران قاجار و تحولات مدرن.</p>
+          <p>در نهایت، در سال ۱۴۰۳، این علاقه‌ی مشترک به نویسندگی و تاریخ ایران و ادیان، جرقه‌ی نوشتن رمانی را زد که عصاره‌ای از تاریخ ایران در چند برهه بود — در قالب داستانی ماجرایی و معمایی. این رمان، «میراث سکوت» نام گرفت.</p>
+          <p>در سال ۱۴۰۵، نوشتن و چاپ این رمان به انتها رسید. همزمان، کار بر روی رمان دوم، «آن سوی خاموشی»، آغاز گشت — بازگشتی به داستانی ناتمام از دوران دانشجویی، اما این بار با پختگی سال‌ها مطالعه و تجربه.</p>
+          <p>علی رضائی اکنون در سمنان زندگی می‌کند. در روز، در دنیای اعداد و ارقام بانک کار می‌کند. در شب، در دنیای داستان‌ها، نامه‌های هرگز ارسال‌شده، و رازهایی که قرن‌ها در سکوت مانده‌اند.</p>
         </div>
       </div>
 
@@ -1331,7 +1349,15 @@
       <div class="philosophy reveal">
         <div class="section-label" style="margin-bottom: 2rem;">فلسفه‌ی نوشتن</div>
         <blockquote>
-          «رمان، داستانی گفته‌شده نیست؛ ویرانه‌ای بازسازی‌شده است. من از اسناد می‌نویسم، از حاشیه‌ها، از فاصله‌های میان تاریخ‌های رسمی.»
+          «من از تاریخ می‌نویسم — اما نه آن تاریخی که در کتاب‌های درسی آمده است. من از لایه‌های پنهان تاریخ می‌نویسم: از نامه‌هایی که هرگز ارسال نشدند، از رازهایی که در سکوت خاک خوردند، از شخصیت‌هایی که در حاشیه‌ی تاریخ زندگی کردند و رفتند.
+          
+          برای من، نویسندگی نوعی باستان‌شناسی است. هر رمان، ویرانه‌ای است که باید بازسازی شود — سنگ به سنگ، واژه به واژه. و در این بازسازی، مرز میان تاریخ و داستان محو می‌شود.
+          
+          من از دن براون آموختم که چگونه تاریخ را به ماجرا تبدیل کنم. از جی.کی. رولینگ آموختم که چگونه دنیایی بسازم که خواننده در آن گم شود. از پدرخوانده آموختم که قدرت، چگونه خانواده‌ها را می‌سازد و ویران می‌کند. از Gravity Falls آموختم که رازها، چگونه نسل‌ها را به هم پیوند می‌زنند.
+          
+          اما بیش از همه، از تاریخ ایران آموختم — از ساسانیان تا قاجار، از مزدک تا ملکم خان — که هر دوره، لایه‌ای از یک راز بزرگ‌تر است. و این راز، هنوز کشف نشده است.
+          
+          من می‌نویسم تا این راز را کشف کنم. و شما را نیز به این کشف دعوت کنم.»
         </blockquote>
         <cite>— علی رضائی</cite>
       </div>
@@ -1341,34 +1367,49 @@
         <div class="divider"><span class="section-label">تأثیرگذاران</span></div>
         <div class="influences-grid">
           <div class="influence-card reveal">
-            <div class="influence-cat">ادبیات</div>
-            <div class="influence-name">صادق هدایت</div>
-            <div class="influence-note">سکوت‌های مدرن و تاریکی‌های درون</div>
+            <div class="influence-cat">نویسندگان</div>
+            <div class="influence-name">دن براون</div>
+            <div class="influence-note">ترکیب تاریخ، رمز، و ماجراجویی</div>
           </div>
           <div class="influence-card reveal">
-            <div class="influence-cat">ادبیات جهان</div>
-            <div class="influence-name">خوزه ساراماگو</div>
-            <div class="influence-note">روایت‌های چندلایه و زمانِ سیال</div>
-          </div>
-          <div class="influence-card reveal">
-            <div class="influence-cat">تاریخ</div>
-            <div class="influence-name">ابن‌مقدمه</div>
-            <div class="influence-note">فلسفه‌ی تاریخ و روش‌شناسی روایت</div>
+            <div class="influence-cat">نویسندگان</div>
+            <div class="influence-name">جی.کی. رولینگ</div>
+            <div class="influence-note">دنیاسازی و شخصیت‌پردازی عمیق</div>
           </div>
           <div class="influence-card reveal">
             <div class="influence-cat">سینما</div>
-            <div class="influence-name">عباس کیارستمی</div>
-            <div class="influence-note">مینیمالیسم و سکوت‌های پرمعنا</div>
+            <div class="influence-name">سه‌گانه‌ی پدرخوانده</div>
+            <div class="influence-note">قدرت، خانواده، و خیانت</div>
+          </div>
+          <div class="influence-card reveal">
+            <div class="influence-cat">سریال</div>
+            <div class="influence-name">Gravity Falls</div>
+            <div class="influence-note">رازهای چندلایه و پیوند نسل‌ها</div>
+          </div>
+          <div class="influence-card reveal">
+            <div class="influence-cat">سریال</div>
+            <div class="influence-name">Avatar: The Legend of Korra</div>
+            <div class="influence-note">دنیاسازی و تحول شخصیت</div>
+          </div>
+          <div class="influence-card reveal">
+            <div class="influence-cat">سریال</div>
+            <div class="influence-name">Better Call Saul</div>
+            <div class="influence-note">پیچیدگی اخلاقی و سقوط تدریجی</div>
+          </div>
+          <div class="influence-card reveal">
+            <div class="influence-cat">سریال</div>
+            <div class="influence-name">Black Sails</div>
+            <div class="influence-note">تاریخ، ماجراجویی، و شخصیت‌های خاکستری</div>
           </div>
           <div class="influence-card reveal">
             <div class="influence-cat">پژوهش</div>
-            <div class="influence-name">بایگانی ملی ایران</div>
-            <div class="influence-note">اسناد قاجار و مشروطه</div>
+            <div class="influence-name">تاریخ ایران</div>
+            <div class="influence-note">از باستان تا معاصر</div>
           </div>
           <div class="influence-card reveal">
-            <div class="influence-cat">سفر</div>
-            <div class="influence-name">جاده‌ی ابریشم</div>
-            <div class="influence-note">از سمرقند تا استانبول</div>
+            <div class="influence-cat">پژوهش</div>
+            <div class="influence-name">تاریخ ادیان</div>
+            <div class="influence-note">ادیان ایرانی و جنبش‌های اجتماعی</div>
           </div>
         </div>
       </div>
@@ -1379,33 +1420,53 @@
         <div class="timeline">
           <div class="timeline-item reveal">
             <div class="timeline-year">۱۳۶۸</div>
-            <div class="timeline-title">تولد در تهران</div>
-            <div class="timeline-desc">در خانواده‌ای از فرهنگیان و کتاب‌خوانان.</div>
+            <div class="timeline-title">تولد در شاهرود</div>
+            <div class="timeline-desc">در شهری که خود، لایه‌هایی از تاریخ را در دل خود جای داده است — شهری در مسیر جاده‌ی ابریشم.</div>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-year">۱۳۸۷</div>
-            <div class="timeline-title">ورود به دانشگاه تهران</div>
-            <div class="timeline-desc">رشته‌ی تاریخ، با تمرکز بر تاریخ اجتماعی قاجار.</div>
+            <div class="timeline-title">ورود به دانشگاه شهید باهنر کرمان</div>
+            <div class="timeline-desc">رشته‌ی مهندسی صنایع. اما در همان سال‌های دانشجویی، عشق به ادبیات و داستان در جانش ریشه دواند.</div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-year">۱۳۸۷-۱۳۹۱</div>
+            <div class="timeline-title">دوران دانشجویی</div>
+            <div class="timeline-desc">آغاز نوشتن متن‌های ادبی؛ شروع رمان ناتمامی که سال‌ها بعد به «آن سوی خاموشی» تبدیل می‌شود.</div>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-year">۱۳۹۲</div>
-            <div class="timeline-title">پژوهش در بایگانی ملی</div>
-            <div class="timeline-desc">کشف نامه‌های گمشده‌ی یک خاندان تاجر — الهام‌بخش اولین رمان.</div>
+            <div class="timeline-title">کارشناسی ارشد مدیریت کسب‌وکار</div>
+            <div class="timeline-desc">در دانشگاه پیام نور. دریافت مدرک و ورود به دنیای حرفه‌ای.</div>
           </div>
           <div class="timeline-item reveal">
-            <div class="timeline-year">۱۳۹۸</div>
-            <div class="timeline-title">انتشار «میراث سکوت»</div>
-            <div class="timeline-desc">اولین رمان؛ برنده‌ی جایزه‌ی ادبی فصل.</div>
+            <div class="timeline-year">۱۳۹۳</div>
+            <div class="timeline-title">استخدام در بانک سپه</div>
+            <div class="timeline-desc">شهرستان شاهرود. آغاز زندگی رسمی در دنیای اعداد و ارقام.</div>
           </div>
           <div class="timeline-item reveal">
-            <div class="timeline-year">۱۴۰۲</div>
-            <div class="timeline-title">سفر پژوهشی استانبول</div>
-            <div class="timeline-desc">شش ماه پژوهش در بایگانی عثمانی برای رمان دوم.</div>
+            <div class="timeline-year">۱۳۹۳-۱۴۰۲</div>
+            <div class="timeline-title">سال‌ها مطالعه و پژوهش</div>
+            <div class="timeline-desc">مطالعه‌ی عمیق تاریخ ایران، تاریخ ادیان، و آثار ادبی جهان. از ساسانیان و مزدک تا دوران قاجار.</div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-year">۱۴۰۳</div>
+            <div class="timeline-title">جرقه‌ی «میراث سکوت»</div>
+            <div class="timeline-desc">ترکیب علاقه به نویسندگی و تاریخ ایران و ادیان، جرقه‌ی نوشتن رمانی را زد که عصاره‌ای از تاریخ ایران در چند برهه بود.</div>
           </div>
           <div class="timeline-item reveal">
             <div class="timeline-year">۱۴۰۵</div>
-            <div class="timeline-title">انتشار «آن سوی خاموشی»</div>
-            <div class="timeline-desc">تریلر سیاسی؛ ترکیبی از تاریخ معاصر و تخیل.</div>
+            <div class="timeline-title">چاپ «میراث سکوت»</div>
+            <div class="timeline-desc">پایان دو سال نوشتن و بازنویسی. انتشار رمان توسط انتشارات متخصص.</div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-year">۱۴۰۵</div>
+            <div class="timeline-title">آغاز «آن سوی خاموشی»</div>
+            <div class="timeline-desc">بازگشت به داستانی ناتمام از دوران دانشجویی، اما این بار با پختگی سال‌ها مطالعه و تجربه.</div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-year">اکنون</div>
+            <div class="timeline-title">سرپرستی بانک سپه منطقه سمنان</div>
+            <div class="timeline-desc">در روز، در دنیای اعداد و ارقام بانک. در شب، در دنیای داستان‌ها و رازهایی که قرن‌ها در سکوت مانده‌اند.</div>
           </div>
         </div>
       </div>
@@ -1435,7 +1496,7 @@
             <div class="cat">نقشه</div>
             <div class="catalog-no">#M-001</div>
           </div>
-          <h4>نقشه تبریز ۱۲۶۵</h4>
+          <h4>نقشه مسیر آرش: لندن — استانبول — تهران</h4>
         </div>
         <div class="archive-item reveal" data-cat="documents">
           <div>
@@ -1450,7 +1511,7 @@
             <div class="cat">شجره‌نامه</div>
             <div class="catalog-no">#F-003</div>
           </div>
-          <h4>خاندان سپهری</h4>
+          <h4>خاندان آرش</h4>
         </div>
         <div class="archive-item reveal" data-cat="objects">
           <div>
@@ -1472,21 +1533,28 @@
             <div class="cat">نقشه</div>
             <div class="catalog-no">#M-014</div>
           </div>
-          <h4>مسیر جاده‌ی ابریشم — ۱۸۷۲</h4>
+          <h4>نقشه‌ی ایران در دوران ساسانی</h4>
         </div>
         <div class="archive-item reveal" data-cat="research">
           <div>
             <div class="cat">پژوهش</div>
             <div class="catalog-no">#R-041</div>
           </div>
-          <h4>یادداشت‌های استانبول</h4>
+          <h4>یادداشت‌های پژوهشی درباره‌ی مزدک</h4>
         </div>
         <div class="archive-item reveal" data-cat="documents">
           <div>
             <div class="cat">سند</div>
             <div class="catalog-no">#D-033</div>
           </div>
-          <h4>قرارداد محرمانه‌ی تجاری</h4>
+          <h4>یادداشت‌های ملکم خان ناظم‌الدوله</h4>
+        </div>
+        <div class="archive-item reveal" data-cat="research">
+          <div>
+            <div class="cat">پژوهش</div>
+            <div class="catalog-no">#R-058</div>
+          </div>
+          <h4>مطالعه‌ی تطبیقی: زکریای رازی و علم باستانی</h4>
         </div>
       </div>
     </div>
@@ -1497,443 +1565,14 @@
     <div class="container">
       <div class="divider"><span class="section-label">بخش چهارم · یادداشت‌های میدانی</span></div>
       <h2 class="section-title reveal">یادداشت‌ها و مقالات</h2>
-      <p class="section-desc reveal">تأملاتی درباره‌ی تاریخ، نوشتن، پژوهش، سفر و کتاب‌هایی که مسیرم را ساختند.</p>
+      <p class="section-desc reveal">تأملاتی درباره‌ی تاریخ، نوشتن، پژوهش، و کتاب‌هایی که مسیرم را ساختند.</p>
 
       <div class="journal-list">
         <article class="journal-item reveal">
           <div>
-            <div class="journal-date">۱۵ خرداد ۱۴۰۵</div>
+            <div class="journal-date">۲۵ تیر ۱۴۰۵</div>
             <div class="journal-cat">تاریخ</div>
           </div>
           <div>
-            <h3 class="journal-title">سکوت‌هایی که تاریخ را ساختند</h3>
-            <p class="journal-excerpt">در بایگانی ملی، میان هزاران سند، آن‌چه نیست به‌اندازه‌ی آن‌چه هست معنا می‌سازد. نامه‌هایی که نوشته نشدند، تصمیم‌هایی که گرفته نشدند، و صداهایی که هرگز بلند نشدند — همه بخشی از تاریخ‌اند...</p>
-          </div>
-        </article>
-
-        <article class="journal-item reveal">
-          <div>
-            <div class="journal-date">۲۸ اردیبهشت ۱۴۰۵</div>
-            <div class="journal-cat">نوشتن</div>
-          </div>
-          <div>
-            <h3 class="journal-title">چرا از حاشیه می‌نویسم، نه از متن</h3>
-            <p class="journal-excerpt">تاریخ‌های رسمی، روایت فاتحان‌اند. اما حقیقت معمولاً در حاشیه زندگی می‌کند — در یادداشت‌های روزنامه‌ی یک منشی، در نامه‌های عاشقانه‌ی یک زن فراموش‌شده، در فهرست بدهی‌های یک کاسب...</p>
-          </div>
-        </article>
-
-        <article class="journal-item reveal">
-          <div>
-            <div class="journal-date">۱۰ اردیبهشت ۱۴۰۵</div>
-            <div class="journal-cat">سفر</div>
-          </div>
-          <div>
-            <h3 class="journal-title">شش ماه در بایگانی عثمانی</h3>
-            <p class="journal-excerpt">استانبول شهری است که در آن هر کوچه، یک قرن را در خود جای داده است. شش ماه پژوهش در بایگانی نخست‌وزیری عثمانی، برایم نه تنها داده‌های تاریخی، بلکه احساسی از زمان آورد که در هیچ کتابی نیافته بودم...</p>
-          </div>
-        </article>
-
-        <article class="journal-item reveal">
-          <div>
-            <div class="journal-date">۲۵ فروردین ۱۴۰۵</div>
-            <div class="journal-cat">پشت صحنه</div>
-          </div>
-          <div>
-            <h3 class="journal-title">صحنه‌ای که از «میراث سکوت» حذف شد</h3>
-            <p class="journal-excerpt">در فصل هفتم، صحنه‌ای وجود داشت که در آن شخصیت اصلی، برای نخستین بار با حقیقت مواجه می‌شد. این صحنه در نسخه‌ی نهایی حذف شد — نه به این دلیل که بد بود، بلکه به این دلیل که خیلی زود حقیقت را آشکار می‌کرد...</p>
-          </div>
-        </article>
-
-        <article class="journal-item reveal">
-          <div>
-            <div class="journal-date">۱۰ فروردین ۱۴۰۵</div>
-            <div class="journal-cat">کتاب</div>
-          </div>
-          <div>
-            <h3 class="journal-title">پنج کتابی که نویسنده‌ام کردند</h3>
-            <p class="journal-excerpt">از «بوف کور» هدایت تا «کوری» ساراماگو، از «مقدمه» ابن‌خلدون تا «خانه‌ی پدری» منوچهر آتشی — این‌ها کتاب‌هایی بودند که مسیر نوشتنم را برای همیشه تغییر دادند...</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ MEDIA ============ -->
-  <section class="media-section" id="media">
-    <div class="container">
-      <div class="divider"><span class="section-label">بخش پنجم · رسانه</span></div>
-      <h2 class="section-title reveal">مصاحبه‌ها و گفتگوها</h2>
-      <p class="section-desc reveal">گزیده‌ای از گفتگوها، پادکست‌ها و حضورهای رسانه‌ای.</p>
-
-      <div class="media-grid">
-        <div class="media-card reveal">
-          <div class="media-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
-            </svg>
-          </div>
-          <div class="media-type">پادکست</div>
-          <div class="media-title">گفتگو با رادیو فرهنگ درباره‌ی «میراث سکوت»</div>
-          <div class="media-meta">۶۲ دقیقه · خرداد ۱۴۰۵</div>
-        </div>
-
-        <div class="media-card reveal">
-          <div class="media-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="6" width="20" height="12" rx="2"/>
-              <path d="M10 10l5 2-5 2z" fill="currentColor"/>
-            </svg>
-          </div>
-          <div class="media-type">ویدیو</div>
-          <div class="media-title">سفر پژوهشی به استانبول — مستند کوتاه</div>
-          <div class="media-meta">۱۸ دقیقه · اردیبهشت ۱۴۰۵</div>
-        </div>
-
-        <div class="media-card reveal">
-          <div class="media-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M4 4h16v16H4z"/>
-              <path d="M4 8h16M8 4v16"/>
-            </svg>
-          </div>
-          <div class="media-type">مصاحبه‌ی مطبوعاتی</div>
-          <div class="media-title">روزنامه‌ی اعتماد — «تاریخ، رمان را می‌سازد»</div>
-          <div class="media-meta">متن کامل · فروردین ۱۴۰۵</div>
-        </div>
-
-        <div class="media-card reveal">
-          <div class="media-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
-            </svg>
-          </div>
-          <div class="media-type">رویداد زنده</div>
-          <div class="media-title">نشست خوانندگان — کتاب‌خانه‌ی ملی</div>
-          <div class="media-meta">۲۵ تیر ۱۴۰۵ · تهران</div>
-        </div>
-
-        <div class="media-card reveal">
-          <div class="media-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <path d="M14 2v6h6M8 13h8M8 17h5"/>
-            </svg>
-          </div>
-          <div class="media-type">بسته‌ی مطبوعاتی</div>
-          <div class="media-title">دانلود تصاویر رسمی و رزومه‌ی نویسنده</div>
-          <div class="media-meta">PDF · به‌روزشده</div>
-        </div>
-
-        <div class="media-card reveal">
-          <div class="media-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          </div>
-          <div class="media-type">گفتگوی صوتی</div>
-          <div class="media-title">پادکست «رواق» — فصل سوم</div>
-          <div class="media-meta">۴۵ دقیقه · اسفند ۱۴۰۴</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ NEWSLETTER ============ -->
-  <section class="newsletter-section" id="newsletter">
-    <div class="container">
-      <div class="section-label reveal">بخش هفتم · حلقه‌ی درونی</div>
-      <h2 class="section-title reveal">بایگانی خصوصی</h2>
-      <p class="newsletter-desc reveal">
-        مشترکان، صحنه‌های حذف‌شده، فصل‌های اضافی، یادداشت‌های پژوهشی و اطلاع‌رسانی زودهنگام درباره‌ی انتشارات جدید را دریافت می‌کنند. با دقت، هرگز با هیاهو.
-      </p>
-
-      <div class="newsletter-perks reveal">
-        <div class="perk"><span class="perk-dot"></span> صحنه‌های حذف‌شده</div>
-        <div class="perk"><span class="perk-dot"></span> فصل‌های اضافی</div>
-        <div class="perk"><span class="perk-dot"></span> یادداشت‌های پژوهشی</div>
-        <div class="perk"><span class="perk-dot"></span> اطلاع‌رسانی زودهنگام</div>
-      </div>
-
-      <form class="newsletter-form reveal" id="newsletterForm">
-        <input type="email" placeholder="ایمیل شما" required>
-        <button type="submit">عضویت</button>
-      </form>
-
-      <div class="newsletter-success" id="newsletterSuccess">
-        <h3>خوش آمدید، خواننده.</h3>
-        <p style="color: rgba(241,232,211,0.7); margin-top: 0.5rem;">اولین نامه به‌زودی به بایگانی شما خواهد رسید.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ COMMUNITY ============ -->
-  <section id="community">
-    <div class="container">
-      <div class="divider"><span class="section-label">بخش هشتم · انجمن</span></div>
-      <h2 class="section-title reveal">انجمن خوانندگان</h2>
-      <p class="section-desc reveal">جایی برای پرسش‌ها، نظریه‌ها، و گفتگو درباره‌ی دنیای رمان‌ها.</p>
-
-      <div class="community-grid">
-        <div class="community-card reveal">
-          <div class="community-icon">❋</div>
-          <h3>پرسش از نویسنده</h3>
-          <p>پرسش‌های خود را درباره‌ی رمان‌ها، شخصیت‌ها، یا فرایند نوشتن مطرح کنید. پاسخ‌ها در یادداشت‌های ماهانه منتشر می‌شوند.</p>
-          <a href="#contact" class="community-link">ارسال پرسش →</a>
-        </div>
-
-        <div class="community-card reveal">
-          <div class="community-icon">⚘</div>
-          <h3>نظریه‌های خوانندگان</h3>
-          <p>آیا نشانه‌ای پنهان یافته‌اید؟ نظریه‌ای درباره‌ی پایان رمان دارید؟ اینجا جایی است که نظریه‌های شما شنیده می‌شوند.</p>
-          <a href="#" class="community-link">مشاهده‌ی نظریه‌ها →</a>
-        </div>
-
-        <div class="community-card reveal">
-          <div class="community-icon">✦</div>
-          <h3>گفتگو درباره‌ی کتاب‌ها</h3>
-          <p>بحث‌های فصل‌به‌فصل، تحلیل شخصیت‌ها، و تبادل نظر با خوانندگان دیگر از سراسر جهان فارسی‌زبان.</p>
-          <a href="#" class="community-link">ورود به بحث‌ها →</a>
-        </div>
-
-        <div class="community-card reveal">
-          <div class="community-icon">◈</div>
-          <h3>رویدادهای زنده</h3>
-          <p>جلسات خوانش، پرسش و پاسخ زنده با نویسنده، و رونمایی از فصل‌های جدید — به‌صورت آنلاین و حضوری.</p>
-          <a href="#" class="community-link">تقویم رویدادها →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="divider"><span class="section-label">بخش نهم · مکاتبات</span></div>
-      <h2 class="section-title reveal">تماس</h2>
-      <p class="section-desc reveal">برای پرسش‌های مطبوعاتی، حقوق ترجمه، دعوت به سخنرانی، یا پیام خوانندگان، از راه مناسب استفاده کنید.</p>
-
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <div class="contact-block">
-            <div class="label">ناشر</div>
-            <h3>انتشارات چشمه</h3>
-            <span>تهران، خیابان کریم‌خان</span>
-          </div>
-
-          <div class="contact-block">
-            <div class="label">نماینده‌ی ادبی</div>
-            <h3>[نام نماینده]</h3>
-            <a href="mailto:rights@agency.com">rights@agency.com</a>
-          </div>
-
-          <div class="contact-block">
-            <div class="label">تماس عمومی</div>
-            <h3>ایمیل</h3>
-            <a href="mailto:hello@alirezaei.author">hello@alirezaei.author</a>
-          </div>
-
-          <div class="contact-block">
-            <div class="label">شبکه‌های اجتماعی</div>
-            <h3>حساب‌های رسمی</h3>
-            <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
-              <a href="#" style="color: var(--bronze);">اینستاگرام</a>
-              <a href="#" style="color: var(--bronze);">ایکس</a>
-              <a href="#" style="color: var(--bronze);">تلگرام</a>
-            </div>
-          </div>
-        </div>
-
-        <form class="contact-form reveal" id="contactForm">
-          <input type="text" placeholder="نام شما" required>
-          <input type="email" placeholder="ایمیل شما" required>
-          <input type="text" placeholder="موضوع">
-          <textarea placeholder="پیام شما..." required></textarea>
-          <button type="submit">ارسال نامه</button>
-        </form>
-
-        <div class="contact-success" id="contactSuccess">
-          <h3 style="font-family: 'Cormorant', serif; font-size: 1.5rem; color: var(--stone); margin-bottom: 0.5rem;">پیام دریافت شد.</h3>
-          <p style="color: rgba(42, 36, 25, 0.7);">پاسخ در زمان مقتضی ارسال خواهد شد.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo">
-        علی رضائی
-        <span class="logo-sub" style="color: var(--gold-dust);">AR</span>
-      </div>
-      <p>نویسنده. پژوهشگر. نگهبان داستان‌های فراموش‌شده. آثار او سکوت‌های تاریخ را بازسازی می‌کنند — از لابه‌لای نامه‌های هرگز ارسال‌شده و انجمن‌های ناپدیدشده.</p>
-    </div>
-
-    <div class="footer-col">
-      <h4>ناوبری</h4>
-      <ul>
-        <li><a href="#books">آثار</a></li>
-        <li><a href="#archive">بایگانی</a></li>
-        <li><a href="#journal">یادداشت‌ها</a></li>
-        <li><a href="#newsletter">خبرنامه</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>ارتباط</h4>
-      <ul>
-        <li><a href="#">اینستاگرام</a></li>
-        <li><a href="#">ایکس / توییتر</a></li>
-        <li><a href="mailto:hello@alirezaei.author">ایمیل</a></li>
-        <li><a href="#media">بسته‌ی مطبوعاتی</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>حقوقی</h4>
-      <ul>
-        <li><a href="#">حریم خصوصی</a></li>
-        <li><a href="#">شرایط استفاده</a></li>
-        <li><a href="#">حقوق ترجمه</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    © ۱۴۰۵ علی رضائی · تمامی داستان‌ها محفوظ است
-  </div>
-</footer>
-
-<!-- ============ EASTER EGG ============ -->
-<button class="hidden-symbol" id="hiddenSymbol" aria-label="نماد پنهان">
-  <svg viewBox="0 0 40 40">
-    <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="0.5"/>
-    <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="0.5"/>
-    <path d="M20 2 L20 38 M2 20 L38 20" stroke="currentColor" stroke-width="0.3"/>
-    <text x="20" y="24" text-anchor="middle" font-size="8" fill="currentColor"
-          font-family="serif" font-style="italic">ع</text>
-  </svg>
-</button>
-
-<div class="manuscript-modal" id="manuscriptModal">
-  <div class="manuscript-content">
-    <div class="wax-seal">ع</div>
-    <div class="manuscript-label">دست‌نوشته‌ی گشوده‌شده · قطعه‌ی شماره‌ی ۰۱</div>
-    <h3 class="manuscript-title">مُهر کاتب خاموش</h3>
-    <p class="manuscript-text">
-      «آن‌که این واژه‌ها را می‌خواند، سفر را آغاز کرده است. سکوت، خالی نیست — در انتظار است.
-      در حاشیه‌ی نسخه‌ای از سال ۱۲۴۷، کسی این جمله را نوشته بود — با جوهری که از خون و زعفران ساخته شده بود.
-      کسی که آن را خواند، دیگر همان نبود.
-      و کسی که آن را نوشت، هرگز بازنگشت.»
-    </p>
-    <p class="manuscript-source">— بازیافته از حاشیه‌ی نسخه‌ی ۱۲۴۷ · تبریز</p>
-    <button class="manuscript-close" id="manuscriptClose">مهر و موم کردن سند</button>
-  </div>
-</div>
-
-<script>
-  // Header scroll effect
-  const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // Mobile menu
-  const menuToggle = document.getElementById('menuToggle');
-  const nav = document.getElementById('nav');
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
-  });
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => nav.classList.remove('open'));
-  });
-
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Archive filter
-  const tabs = document.querySelectorAll('.archive-tab');
-  const items = document.querySelectorAll('.archive-item');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const filter = tab.dataset.filter;
-      items.forEach(item => {
-        if (filter === 'all' || item.dataset.cat === filter) {
-          item.style.display = '';
-          setTimeout(() => item.style.opacity = '1', 10);
-        } else {
-          item.style.opacity = '0';
-          setTimeout(() => item.style.display = 'none', 300);
-        }
-      });
-    });
-  });
-
-  // Newsletter form
-  const newsletterForm = document.getElementById('newsletterForm');
-  const newsletterSuccess = document.getElementById('newsletterSuccess');
-  newsletterForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    newsletterForm.style.display = 'none';
-    newsletterSuccess.classList.add('show');
-  });
-
-  // Contact form
-  const contactForm = document.getElementById('contactForm');
-  const contactSuccess = document.getElementById('contactSuccess');
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    contactForm.style.display = 'none';
-    contactSuccess.classList.add('show');
-  });
-
-  // Easter egg — require 3 clicks
-  const hiddenSymbol = document.getElementById('hiddenSymbol');
-  const manuscriptModal = document.getElementById('manuscriptModal');
-  const manuscriptClose = document.getElementById('manuscriptClose');
-  let clicks = 0;
-
-  hiddenSymbol.addEventListener('click', () => {
-    clicks++;
-    if (clicks >= 3) {
-      manuscriptModal.classList.add('show');
-      clicks = 0;
-    }
-  });
-
-  manuscriptClose.addEventListener('click', () => {
-    manuscriptModal.classList.remove('show');
-  });
-
-  manuscriptModal.addEventListener('click', (e) => {
-    if (e.target === manuscriptModal) {
-      manuscriptModal.classList.remove('show');
-    }
-  });
-
-  // ESC to close modal
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      manuscriptModal.classList.remove('show');
-    }
-  });
-</script>
-
-</body>
-</html>
-
+            <h3 class="journal-title">چرا تاریخ ایران، بهترین مواد اولیه‌ی یک تریلر است</h3>
+            <p class="journal-excerpt">ایران، سرزمینی است که هر لایه‌اش، رازی را در خود جای داده است. از ساسانیان تا قاجار، از مزدک تا ملکم خان — هر دوره، داستانی ناتمام است که چشم به راه روایتگر خود می‌نگرد. تاریخ ایران، پر از لحظاتی است که در آن‌ها حقیقت و افسانه در هم می‌آمیزند، و این دقیقاً همان جایی است که تریلر متولد می‌شود: در مرز میان آن‌چه اتفاق افتاد و آن‌چه می‌توانست اتفاق بیفتد. وقتی
