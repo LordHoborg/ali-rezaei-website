@@ -4,1266 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>علی رضائی — نویسنده · پژوهشگر · نگهبان داستان‌های فراموش‌شده</title>
-<meta name="description" content="وب‌سایت رسمی علی رضائی، نویسنده‌ی رمان‌های میراث سکوت و آن سوی خاموشی. آرشیو اسناد، نقشه‌ها و داستان‌های پنهان.">
+<meta name="description" content="وب‌سایت رسمی علی رضائی، نویسنده‌ی رمان‌های میراث سکوت و آن سوی خاموشی.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<style>
-  @font-face {
-    font-family: 'Vazirmatn';
-    src: url('https://cdn.jsdelivr.net/fontsource/fonts/vazirmatn@latest/persian-400-normal.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Vazirmatn';
-    src: url('https://cdn.jsdelivr.net/fontsource/fonts/vazirmatn@latest/persian-500-normal.woff2') format('woff2');
-    font-weight: 500;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Vazirmatn';
-    src: url('https://cdn.jsdelivr.net/fontsource/fonts/vazirmatn@latest/persian-700-normal.woff2') format('woff2');
-    font-weight: 700;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Cormorant';
-    src: url('https://cdn.jsdelivr.net/fontsource/fonts/cormorant-garamond@latest/latin-500-normal.woff2') format('woff2');
-    font-weight: 500;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Cormorant';
-    src: url('https://cdn.jsdelivr.net/fontsource/fonts/cormorant-garamond@latest/latin-700-normal.woff2') format('woff2');
-    font-weight: 700;
-    font-display: swap;
-  }
-
-  :root {
-    --parchment: #F1E8D3;
-    --aged-paper: #E8DCC4;
-    --ink: #2A2419;
-    --bronze: #8B6F47;
-    --stone: #3D3A33;
-    --gold-dust: #B89968;
-    --shadow: #1C1914;
-    --deep: #0F0D0A;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Vazirmatn', sans-serif;
-    background: var(--parchment);
-    color: var(--ink);
-    line-height: 1.7;
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 30%, rgba(139,111,71,0.08), transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(184,153,104,0.06), transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.44 0 0 0 0 0.28 0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 1;
-    mix-blend-mode: multiply;
-  }
-
-  main, header, footer { position: relative; z-index: 2; }
-
-  /* ============ HEADER ============ */
-  .header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(241, 232, 211, 0.92);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(139,111,71,0.15);
-    z-index: 100;
-    padding: 1rem 2rem;
-    transition: all 0.4s;
-  }
-  .header.scrolled { 
-    padding: 0.6rem 2rem;
-    box-shadow: 0 2px 20px rgba(28,25,20,0.08);
-  }
-  .header-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--stone);
-    letter-spacing: -0.02em;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .logo:hover { color: var(--bronze); }
-  .logo-sub {
-    font-size: 0.7rem;
-    color: var(--bronze);
-    letter-spacing: 0.2em;
-    font-weight: 500;
-    font-family: 'Cormorant', serif;
-  }
-  .nav {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-  .nav a {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    color: var(--stone);
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    position: relative;
-    padding: 0.5rem 0;
-  }
-  .nav a:hover { color: var(--bronze); }
-  .nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 1px;
-    background: var(--bronze);
-    transition: width 0.3s;
-  }
-  .nav a:hover::after { width: 100%; }
-
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-  }
-  .menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--stone);
-    transition: all 0.3s;
-  }
-
-  @media (max-width: 900px) {
-    .nav { display: none; }
-    .menu-toggle { display: flex; }
-    .nav.open {
-      display: flex;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      left: 0;
-      background: var(--parchment);
-      flex-direction: column;
-      padding: 2rem;
-      gap: 1.5rem;
-      border-bottom: 1px solid rgba(139,111,71,0.2);
-      box-shadow: 0 10px 30px rgba(28,25,20,0.1);
-    }
-  }
-
-  /* ============ HERO ============ */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 8rem 2rem 4rem;
-    position: relative;
-  }
-  .hero-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .hero-text .label {
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    color: var(--bronze);
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    opacity: 0;
-    animation: fadeUp 1s ease-out 0.2s forwards;
-  }
-  .hero-text h1 {
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    font-weight: 700;
-    color: var(--stone);
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 1s ease-out 0.4s forwards;
-  }
-  .hero-text .intro {
-    font-size: 1.15rem;
-    color: rgba(42, 36, 25, 0.75);
-    max-width: 520px;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 1s ease-out 0.6s forwards;
-    line-height: 1.9;
-  }
-  .hero-text .subtitle {
-    font-size: 0.85rem;
-    color: var(--bronze);
-    letter-spacing: 0.2em;
-    opacity: 0;
-    animation: fadeUp 1s ease-out 0.8s forwards;
-    font-family: 'Cormorant', serif;
-    font-style: italic;
-  }
-  .hero-portrait {
-    position: relative;
-    aspect-ratio: 3/4;
-    max-width: 440px;
-    margin: 0 auto;
-    opacity: 0;
-    animation: fadeUp 1.2s ease-out 0.3s forwards;
-  }
-  .hero-portrait::before,
-  .hero-portrait::after {
-    content: '';
-    position: absolute;
-    border: 1px solid rgba(139,111,71,0.3);
-  }
-  .hero-portrait::before { inset: -1rem; }
-  .hero-portrait::after { inset: -2rem; border-color: rgba(139,111,71,0.1); }
-  .portrait-img {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #3D3A33 0%, #8B6F47 50%, #3D3A33 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--parchment);
-    font-size: 9rem;
-    font-weight: 700;
-    filter: grayscale(20%) sepia(15%);
-    position: relative;
-    overflow: hidden;
-  }
-  .portrait-img::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(241,232,211,0.15), transparent 60%);
-  }
-  .archive-stamp {
-    position: absolute;
-    bottom: -1.5rem;
-    left: -1.5rem;
-    background: var(--parchment);
-    border: 1px solid rgba(139,111,71,0.4);
-    padding: 0.5rem 1rem;
-    transform: rotate(-8deg);
-    box-shadow: 0 4px 12px rgba(28,25,20,0.15);
-  }
-  .archive-stamp .label { font-size: 0.65rem; color: var(--bronze); letter-spacing: 0.2em; }
-  .archive-stamp .num { font-size: 0.75rem; color: var(--stone); font-weight: 500; font-family: 'Cormorant', serif; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ============ SECTIONS ============ */
-  section { padding: 6rem 2rem; position: relative; }
-  .container { max-width: 1400px; margin: 0 auto; }
-
-  .section-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    color: var(--bronze);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    font-family: 'Cormorant', serif;
-    font-weight: 500;
-  }
-  .section-title {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    font-weight: 700;
-    color: var(--stone);
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-  .section-desc {
-    color: rgba(42, 36, 25, 0.7);
-    font-size: 1.05rem;
-    max-width: 620px;
-    margin-bottom: 3rem;
-    line-height: 1.9;
-  }
-
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    color: var(--bronze);
-    margin-bottom: 3rem;
-  }
-  .divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--bronze), transparent);
-  }
-
-  /* ============ BOOKS ============ */
-  .books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 3rem;
-  }
-  .book-card {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 1.5rem;
-    align-items: start;
-    padding: 1.5rem;
-    border: 1px solid rgba(139,111,71,0.15);
-    transition: all 0.5s;
-    background: rgba(241,232,211,0.5);
-    cursor: pointer;
-  }
-  .book-card:hover {
-    border-color: var(--bronze);
-    background: var(--parchment);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(28,25,20,0.12);
-  }
-  .book-cover {
-    aspect-ratio: 2/3;
-    background: linear-gradient(135deg, var(--stone), var(--bronze));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--parchment);
-    font-weight: 700;
-    font-size: 1.4rem;
-    text-align: center;
-    padding: 1rem;
-    position: relative;
-    line-height: 1.3;
-  }
-  .book-cover.upcoming {
-    background: linear-gradient(135deg, #2A2419, #3D3A33);
-  }
-  .book-cover.upcoming::after {
-    content: 'به‌زودی';
-    position: absolute;
-    bottom: 0.75rem;
-    right: 0.75rem;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    color: var(--gold-dust);
-    padding: 0.2rem 0.5rem;
-    border: 1px solid var(--gold-dust);
-  }
-  .book-info h3 {
-    font-size: 1.6rem;
-    color: var(--stone);
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-  }
-  .book-info .genre {
-    font-size: 0.7rem;
-    color: var(--bronze);
-    letter-spacing: 0.2em;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-  }
-  .book-info p {
-    font-size: 0.9rem;
-    color: rgba(42, 36, 25, 0.7);
-    line-height: 1.8;
-  }
-
-  /* ============ ABOUT ============ */
-  .about-section {
-    background: var(--aged-paper);
-    border-top: 1px solid rgba(139,111,71,0.2);
-    border-bottom: 1px solid rgba(139,111,71,0.2);
-  }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 5rem;
-    align-items: start;
-  }
-  .about-portrait {
-    position: relative;
-    aspect-ratio: 3/4;
-    background: linear-gradient(135deg, #3D3A33, #8B6F47);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--parchment);
-    font-size: 6rem;
-    font-weight: 700;
-    filter: grayscale(30%) sepia(20%);
-  }
-  .about-portrait::before {
-    content: '';
-    position: absolute;
-    inset: -1rem;
-    border: 1px solid rgba(139,111,71,0.3);
-  }
-  .about-text p {
-    font-size: 1.05rem;
-    color: rgba(42, 36, 25, 0.8);
-    margin-bottom: 1.5rem;
-    line-height: 1.9;
-  }
-  .about-text p:first-letter {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--bronze);
-    float: right;
-    line-height: 1;
-    margin-left: 0.5rem;
-    margin-top: 0.3rem;
-    font-family: 'Cormorant', serif;
-  }
-
-  /* Philosophy */
-  .philosophy {
-    margin-top: 5rem;
-    padding: 4rem 2rem;
-    background: var(--parchment);
-    border: 1px solid rgba(139,111,71,0.2);
-    text-align: center;
-    position: relative;
-  }
-  .philosophy::before,
-  .philosophy::after {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 1px solid var(--bronze);
-    opacity: 0.4;
-  }
-  .philosophy::before { top: 1rem; right: 1rem; border-left: none; border-bottom: none; }
-  .philosophy::after { bottom: 1rem; left: 1rem; border-right: none; border-top: none; }
-  .philosophy blockquote {
-    font-family: 'Cormorant', serif;
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    color: var(--stone);
-    font-style: italic;
-    line-height: 1.5;
-    max-width: 800px;
-    margin: 0 auto 1.5rem;
-    font-weight: 500;
-  }
-  .philosophy cite {
-    font-size: 0.8rem;
-    color: var(--bronze);
-    letter-spacing: 0.2em;
-    font-style: normal;
-  }
-
-  /* Timeline */
-  .timeline {
-    margin-top: 5rem;
-    position: relative;
-    padding-right: 3rem;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    right: 0.5rem;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--bronze), transparent);
-  }
-  .timeline-item {
-    position: relative;
-    padding-bottom: 3rem;
-    padding-right: 2rem;
-  }
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    right: -2.6rem;
-    top: 0.5rem;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--bronze);
-    box-shadow: 0 0 0 4px var(--parchment), 0 0 0 5px var(--bronze);
-  }
-  .timeline-year {
-    font-family: 'Cormorant', serif;
-    font-size: 1.5rem;
-    color: var(--bronze);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  .timeline-title {
-    font-size: 1.1rem;
-    color: var(--stone);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  .timeline-desc {
-    color: rgba(42, 36, 25, 0.7);
-    font-size: 0.95rem;
-    line-height: 1.8;
-  }
-
-  /* Influences */
-  .influences-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .influence-card {
-    padding: 1.5rem;
-    border: 1px solid rgba(139,111,71,0.2);
-    background: rgba(241,232,211,0.5);
-    transition: all 0.4s;
-  }
-  .influence-card:hover {
-    border-color: var(--bronze);
-    background: var(--parchment);
-    transform: translateY(-3px);
-  }
-  .influence-cat {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    color: var(--bronze);
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .influence-name {
-    font-family: 'Cormorant', serif;
-    font-size: 1.3rem;
-    color: var(--stone);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  .influence-note {
-    font-size: 0.85rem;
-    color: rgba(42, 36, 25, 0.65);
-  }
-
-  /* ============ ARCHIVE / WORLD ============ */
-  .archive-section {
-    background: var(--stone);
-    color: var(--parchment);
-    position: relative;
-    overflow: hidden;
-  }
-  .archive-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23B89968' stroke-width='0.5' opacity='0.15'%3E%3Ccircle cx='200' cy='200' r='150'/%3E%3Ccircle cx='200' cy='200' r='100'/%3E%3Ccircle cx='200' cy='200' r='50'/%3E%3Cpath d='M200 50 L200 350 M50 200 L350 200 M90 90 L310 310 M310 90 L90 310'/%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.3;
-  }
-  .archive-section .section-title { color: var(--parchment); }
-  .archive-section .section-desc { color: rgba(241,232,211,0.7); }
-  .archive-section .section-label { color: var(--gold-dust); }
-
-  .archive-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 3rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(184,153,104,0.2);
-  }
-  .archive-tab {
-    padding: 0.6rem 1.2rem;
-    background: transparent;
-    border: 1px solid rgba(184,153,104,0.3);
-    color: rgba(241,232,211,0.7);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: inherit;
-  }
-  .archive-tab:hover {
-    border-color: var(--gold-dust);
-    color: var(--parchment);
-  }
-  .archive-tab.active {
-    background: var(--gold-dust);
-    color: var(--shadow);
-    border-color: var(--gold-dust);
-  }
-
-  .archive-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.5rem;
-  }
-  .archive-item {
-    aspect-ratio: 4/5;
-    background: rgba(241,232,211,0.05);
-    border: 1px solid rgba(184,153,104,0.2);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    transition: all 0.5s;
-    cursor: pointer;
-    overflow: hidden;
-  }
-  .archive-item::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(139,111,71,0.1), transparent);
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
-  .archive-item:hover {
-    background: rgba(241,232,211,0.08);
-    border-color: var(--gold-dust);
-    transform: translateY(-4px);
-  }
-  .archive-item:hover::before { opacity: 1; }
-  .archive-item .cat {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    color: var(--gold-dust);
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
-  }
-  .archive-item .catalog-no {
-    font-family: 'Cormorant', serif;
-    font-size: 0.75rem;
-    color: rgba(241,232,211,0.5);
-    position: relative;
-    z-index: 1;
-  }
-  .archive-item h4 {
-    font-family: 'Cormorant', serif;
-    font-size: 1.3rem;
-    color: var(--parchment);
-    font-weight: 500;
-    margin-top: auto;
-    position: relative;
-    z-index: 1;
-    line-height: 1.3;
-  }
-  .archive-item .sealed {
-    font-size: 0.7rem;
-    color: var(--gold-dust);
-    letter-spacing: 0.15em;
-    margin-top: 0.5rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ============ JOURNAL ============ */
-  .journal-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .journal-item {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 3rem;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid rgba(139,111,71,0.2);
-    transition: all 0.4s;
-    cursor: pointer;
-  }
-  .journal-item:hover {
-    padding-right: 1rem;
-  }
-  .journal-item:hover .journal-title { color: var(--bronze); }
-  .journal-date {
-    font-family: 'Cormorant', serif;
-    font-size: 0.85rem;
-    color: var(--bronze);
-    letter-spacing: 0.1em;
-  }
-  .journal-cat {
-    font-size: 0.65rem;
-    color: var(--bronze);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    margin-top: 0.5rem;
-  }
-  .journal-title {
-    font-family: 'Cormorant', serif;
-    font-size: 1.8rem;
-    color: var(--stone);
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-    transition: color 0.3s;
-    line-height: 1.3;
-  }
-  .journal-excerpt {
-    color: rgba(42, 36, 25, 0.7);
-    font-size: 0.95rem;
-    line-height: 1.8;
-  }
-
-  @media (max-width: 700px) {
-    .journal-item { grid-template-columns: 1fr; gap: 1rem; }
-  }
-
-  /* ============ MEDIA ============ */
-  .media-section {
-    background: var(--aged-paper);
-    border-top: 1px solid rgba(139,111,71,0.2);
-    border-bottom: 1px solid rgba(139,111,71,0.2);
-  }
-  .media-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  .media-card {
-    background: var(--parchment);
-    border: 1px solid rgba(139,111,71,0.2);
-    padding: 2rem;
-    transition: all 0.4s;
-    cursor: pointer;
-  }
-  .media-card:hover {
-    border-color: var(--bronze);
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(28,25,20,0.1);
-  }
-  .media-icon {
-    width: 48px;
-    height: 48px;
-    border: 1px solid var(--bronze);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    color: var(--bronze);
-  }
-  .media-type {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    color: var(--bronze);
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .media-title {
-    font-family: 'Cormorant', serif;
-    font-size: 1.4rem;
-    color: var(--stone);
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
-  }
-  .media-meta {
-    font-size: 0.8rem;
-    color: rgba(42, 36, 25, 0.6);
-  }
-
-  /* ============ NEWSLETTER ============ */
-  .newsletter-section {
-    background: var(--shadow);
-    color: var(--parchment);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .newsletter-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L90 50 L50 90 L10 50 Z' fill='none' stroke='%23B89968' stroke-width='0.3' opacity='0.2'/%3E%3C/svg%3E");
-    opacity: 0.4;
-  }
-  .newsletter-section .section-title { color: var(--parchment); }
-  .newsletter-section .section-label { color: var(--gold-dust); }
-  .newsletter-desc {
-    max-width: 600px;
-    margin: 0 auto 3rem;
-    color: rgba(241,232,211,0.75);
-    font-size: 1.05rem;
-    position: relative;
-    line-height: 1.9;
-  }
-  .newsletter-perks {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    position: relative;
-  }
-  .perk {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    color: rgba(241,232,211,0.8);
-  }
-  .perk-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--gold-dust);
-    border-radius: 50%;
-  }
-  .newsletter-form {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    gap: 0.75rem;
-    position: relative;
-  }
-  .newsletter-form input {
-    flex: 1;
-    padding: 1rem 1.25rem;
-    background: rgba(241,232,211,0.05);
-    border: 1px solid rgba(184,153,104,0.3);
-    color: var(--parchment);
-    font-family: inherit;
-    font-size: 0.95rem;
-    outline: none;
-    transition: all 0.3s;
-  }
-  .newsletter-form input::placeholder { color: rgba(241,232,211,0.4); }
-  .newsletter-form input:focus {
-    border-color: var(--gold-dust);
-    background: rgba(241,232,211,0.08);
-  }
-  .newsletter-form button {
-    padding: 1rem 2rem;
-    background: var(--gold-dust);
-    color: var(--shadow);
-    border: none;
-    font-family: inherit;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 500;
-  }
-  .newsletter-form button:hover {
-    background: var(--parchment);
-  }
-  .newsletter-success {
-    display: none;
-    padding: 2rem;
-    border: 1px solid var(--gold-dust);
-    background: rgba(184,153,104,0.1);
-    position: relative;
-  }
-  .newsletter-success.show { display: block; }
-  .newsletter-success h3 {
-    font-family: 'Cormorant', serif;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  @media (max-width: 600px) {
-    .newsletter-form { flex-direction: column; }
-  }
-
-  /* ============ COMMUNITY ============ */
-  .community-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  .community-card {
-    padding: 2rem;
-    border: 1px solid rgba(139,111,71,0.2);
-    background: rgba(241,232,211,0.5);
-    transition: all 0.4s;
-  }
-  .community-card:hover {
-    border-color: var(--bronze);
-    background: var(--parchment);
-    transform: translateY(-3px);
-  }
-  .community-icon {
-    font-size: 2rem;
-    color: var(--bronze);
-    margin-bottom: 1rem;
-  }
-  .community-card h3 {
-    font-family: 'Cormorant', serif;
-    font-size: 1.4rem;
-    color: var(--stone);
-    margin-bottom: 0.75rem;
-    font-weight: 500;
-  }
-  .community-card p {
-    color: rgba(42, 36, 25, 0.7);
-    font-size: 0.9rem;
-    margin-bottom: 1.25rem;
-    line-height: 1.8;
-  }
-  .community-link {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    color: var(--bronze);
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: gap 0.3s;
-  }
-  .community-link:hover { gap: 0.8rem; }
-
-  /* ============ CONTACT ============ */
-  .contact-section {
-    background: var(--aged-paper);
-    border-top: 1px solid rgba(139,111,71,0.2);
-  }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 5rem;
-    align-items: start;
-  }
-  .contact-info h3 {
-    font-family: 'Cormorant', serif;
-    font-size: 1.3rem;
-    color: var(--stone);
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-  }
-  .contact-block {
-    margin-bottom: 2rem;
-  }
-  .contact-block .label {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    color: var(--bronze);
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-  .contact-block a, .contact-block span {
-    color: var(--stone);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.3s;
-  }
-  .contact-block a:hover { color: var(--bronze); }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    padding: 1rem 1.25rem;
-    background: var(--parchment);
-    border: 1px solid rgba(139,111,71,0.25);
-    color: var(--ink);
-    font-family: inherit;
-    font-size: 0.95rem;
-    outline: none;
-    transition: all 0.3s;
-  }
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    border-color: var(--bronze);
-    background: #fff;
-  }
-  .contact-form textarea {
-    resize: vertical;
-    min-height: 150px;
-  }
-  .contact-form button {
-    padding: 1rem 2rem;
-    background: var(--stone);
-    color: var(--parchment);
-    border: 1px solid var(--stone);
-    font-family: inherit;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 500;
-  }
-  .contact-form button:hover {
-    background: var(--bronze);
-    border-color: var(--bronze);
-  }
-  .contact-success {
-    display: none;
-    padding: 2rem;
-    border: 1px solid var(--bronze);
-    background: var(--parchment);
-    text-align: center;
-  }
-  .contact-success.show { display: block; }
-
-  @media (max-width: 900px) {
-    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-  }
-
-  /* ============ FOOTER ============ */
-  footer {
-    background: var(--deep);
-    color: var(--parchment);
-    padding: 5rem 2rem 2rem;
-  }
-  .footer-grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(184,153,104,0.15);
-  }
-  .footer-brand .logo {
-    color: var(--parchment);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  .footer-brand p {
-    color: rgba(241,232,211,0.6);
-    font-size: 0.9rem;
-    max-width: 320px;
-    line-height: 1.8;
-  }
-  .footer-col h4 {
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    color: var(--gold-dust);
-    text-transform: uppercase;
-    margin-bottom: 1.25rem;
-  }
-  .footer-col ul {
-    list-style: none;
-  }
-  .footer-col li {
-    margin-bottom: 0.75rem;
-  }
-  .footer-col a {
-    color: rgba(241,232,211,0.7);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-  }
-  .footer-col a:hover { color: var(--gold-dust); }
-  .footer-bottom {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding-top: 2rem;
-    text-align: center;
-    font-size: 0.75rem;
-    color: rgba(241,232,211,0.4);
-    letter-spacing: 0.15em;
-  }
-
-  @media (max-width: 800px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .footer-brand { grid-column: 1 / -1; }
-  }
-
-  /* ============ EASTER EGG ============ */
-  .hidden-symbol {
-    position: fixed;
-    bottom: 2rem;
-    left: 2rem;
-    width: 40px;
-    height: 40px;
-    opacity: 0.08;
-    cursor: pointer;
-    transition: opacity 0.7s;
-    z-index: 50;
-    background: none;
-    border: none;
-    padding: 0;
-  }
-  .hidden-symbol:hover { opacity: 0.4; }
-  .hidden-symbol svg { width: 100%; height: 100%; color: var(--bronze); }
-
-  .manuscript-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(15,13,10,0.85);
-    backdrop-filter: blur(8px);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    animation: fadeIn 0.5s;
-  }
-  .manuscript-modal.show { display: flex; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-  .manuscript-content {
-    max-width: 600px;
-    width: 100%;
-    background: var(--parchment);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.44 0 0 0 0 0.28 0 0 0 0.2 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
-    border: 1px solid rgba(139,111,71,0.4);
-    padding: 4rem 3rem;
-    position: relative;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-    animation: slideUp 0.6s ease-out;
-  }
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .wax-seal {
-    position: absolute;
-    top: -1.5rem;
-    right: 50%;
-    transform: translateX(50%);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, var(--gold-dust), var(--bronze));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--parchment);
-    font-family: 'Cormorant', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3), inset 0 -2px 6px rgba(0,0,0,0.2);
-  }
-  .manuscript-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    color: var(--bronze);
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  .manuscript-title {
-    font-family: 'Cormorant', serif;
-    font-size: 1.8rem;
-    color: var(--stone);
-    text-align: center;
-    margin-bottom: 2rem;
-    font-weight: 500;
-    line-height: 1.3;
-  }
-  .manuscript-text {
-    font-family: 'Cormorant', serif;
-    font-size: 1.15rem;
-    color: rgba(42, 36, 25, 0.85);
-    line-height: 1.9;
-    text-align: justify;
-    font-style: italic;
-    margin-bottom: 2rem;
-  }
-  .manuscript-source {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    color: var(--bronze);
-    text-align: center;
-    font-style: normal;
-    margin-bottom: 2rem;
-  }
-  .manuscript-close {
-    width: 100%;
-    padding: 0.8rem;
-    background: transparent;
-    border: 1px solid var(--bronze);
-    color: var(--stone);
-    font-family: inherit;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .manuscript-close:hover {
-    background: var(--stone);
-    color: var(--parchment);
-    border-color: var(--stone);
-  }
-
-  /* ============ REVEAL ANIMATION ============ */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease, transform 1s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-    .hero-text .intro { margin-right: auto; margin-left: auto; }
-    .hero-portrait { max-width: 300px; }
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .about-portrait { max-width: 300px; margin: 0 auto; }
-    .book-card { grid-template-columns: 1fr 2fr; }
-    .header { padding: 1rem; }
-    section { padding: 4rem 1.25rem; }
-  }
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- ============ HEADER ============ -->
 <header class="header" id="header">
   <div class="header-inner">
-    <a href="#home" class="logo">
-      علی رضائی
-      <span class="logo-sub">AR</span>
-    </a>
+    <a href="#home" class="logo">علی رضائی <span class="logo-sub">AR</span></a>
     <nav class="nav" id="nav">
       <a href="#home">خانه</a>
       <a href="#about">درباره</a>
       <a href="#books">آثار</a>
       <a href="#archive">آرشیو</a>
       <a href="#journal">یادداشت‌ها</a>
-      <a href="#media">رسانه</a>
-      <a href="#community">انجمن</a>
       <a href="#contact">تماس</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="منو">
@@ -1274,16 +29,11 @@
 
 <main>
 
-  <!-- ============ HERO ============ -->
   <section class="hero" id="home">
     <div class="hero-inner">
       <div class="hero-text">
-        <div class="label">۱۴۰۵ · تیرماه</div>
         <h1>علی رضائی</h1>
-        <p class="intro">
-          علی رضائی، زاده‌ی شاهرود. نویسنده‌ی رمان‌های «میراث سکوت» و «آن سوی خاموشی».
-          مهندس صنایع و مدیر کسب‌وکار، اما در عمق، نگهبان داستان‌هایی که تاریخ در سکوت فرو برده است.
-        </p>
+        <p class="intro">علی رضائی. نویسنده‌ی رمان‌های «میراث سکوت» و «آن سوی خاموشی». یک مهندس و بانکدار ساده اما در عمق، نگهبان داستان‌هایی که تاریخ در سکوت فرو برده است.</p>
         <div class="subtitle">نویسنده · پژوهشگر · نگهبان داستان‌های فراموش‌شده</div>
       </div>
       <div class="hero-portrait">
@@ -1295,190 +45,209 @@
       </div>
     </div>
   </section>
+  <section class="genre-section" id="genre">
+    <div class="container">
+      <div class="divider"><span class="section-label">آشنایی با ژانر</span></div>
+      <h2 class="section-title">تریلر چیست؟</h2>
+      <p class="section-desc">ژانری که در ایران کمتر به آن پرداخته شده، اما پتانسیل بی‌نظیری برای روایت داستان‌های تاریخی و معمایی دارد.</p>
 
-  <!-- ============ BOOKS ============ -->
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">تریلر چیست و چه ویژگی‌هایی دارد؟</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>تریلر (Thriller) یا «هیجان‌انگیز»، ژانری است که بر پایه‌ی تنش، تعلیق، و هیجان بنا شده است. خواننده را در حالتی از انتظار و اضطراب نگه می‌دارد.</p>
+              <p>ویژگی‌های اصلی تریلر:</p>
+              <ul>
+                <li><strong>تعلیق مداوم:</strong> خواننده همیشه در حالت انتظار است.</li>
+                <li><strong>ضرب‌آهنگ سریع:</strong> داستان با سرعت پیش می‌رود.</li>
+                <li><strong>شخصیت‌های پیچیده:</strong> قهرمانان معمولاً خاکستری‌اند.</li>
+                <li><strong>رازهای چندلایه:</strong> هر پاسخی، سوالی جدید ایجاد می‌کند.</li>
+                <li><strong>پایان غیرمنتظره:</strong> خواننده را غافلگیر می‌کند.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">تریلر تاریخی چه تفاوتی با تریلر معمولی دارد؟</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>تریلر تاریخی، زیرژانری از تریلر است که در بستر یک دوره‌ی تاریخی خاص روایت می‌شود.</p>
+              <ul>
+                <li><strong>پس‌زمینه‌ی واقعی:</strong> رویدادها بر اساس تاریخ واقعی‌اند، اما داستان تخیلی است.</li>
+                <li><strong>لایه‌های تاریخی:</strong> نویسنده باید هم داستان جذاب بنویسد، هم به واقعیت پایبند باشد.</li>
+                <li><strong>رازهای تاریخی:</strong> بر اساس معماهای واقعی تاریخ ساخته می‌شوند.</li>
+                <li><strong>سفر در زمان:</strong> خواننده به دوره‌های مختلف سفر می‌کند.</li>
+              </ul>
+              <p>نمونه‌های معروف: «داوینچی کد» دن براون، «نام گل سرخ» اومبرتو اکو، «پدرخوانده» ماریو پوزو.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">چرا تریلر تاریخی در ایران کمتر نوشته شده؟</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>ایران یکی از غنی‌ترین تاریخ‌های جهان را دارد، اما تریلر تاریخی در ادبیات ایران کمتر دیده شده. دلایل:</p>
+              <ul>
+                <li><strong>تمرکز بر ژانرهای دیگر:</strong> ادبیات ایران بیشتر بر واقع‌گرایی و داستان‌های اجتماعی متمرکز بوده.</li>
+                <li><strong>چالش‌های پژوهشی:</strong> نوشتن تریلر تاریخی نیاز به پژوهش عمیق دارد.</li>
+                <li><strong>بازار نشر:</strong> ناشران به ژانرهای آشنا تمایل دارند.</li>
+              </ul>
+              <p>اما تاریخ ایران پر از رازها و شخصیت‌های پیچیده‌ای است که منتظر روایت‌اند.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">چرا من به نوشتن تریلر تاریخی روی آوردم؟</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>از نوجوانی عاشق تاریخ ایران و تاریخ ادیان بودم. همزمان داستان‌های دن براون و جی.کی. رولینگ را می‌خواندم.</p>
+              <p>وقتی درباره‌ی ساسانیان، مزدک، زکریای رازی، و ملکم خان پژوهش کردم، فهمیدم هر کدام یک تریلر کامل‌اند:</p>
+              <ul>
+                <li><strong>مزدک:</strong> پیامبری با ایده‌ی برابری که پادشاه ابتدا حمایتش کرد، سپس هزاران پیروانش را کشت.</li>
+                <li><strong>زکریای رازی:</strong> دانشمندی که رازهایی درباره‌ی علم باستانی کشف کرد.</li>
+                <li><strong>ملکم خان:</strong> روشنفکری که در قاجار سعی کرد ایران را مدرن کند — با هزینه‌ای سنگین.</li>
+              </ul>
+              <p>این داستان‌ها منتظر روایت بودند. من تصمیم گرفتم آن‌ها را در قالب تریلر تاریخی روایت کنم — نه به‌عنوان درس تاریخ، بلکه به‌عنوان ماجراجویی.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="accordion-title">آثار من چگونه در این ژانر قرار می‌گیرند؟</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>رمان‌های من تلاش‌هایی برای پر کردن این خلاء در ادبیات ایران‌اند:</p>
+              <ul>
+                <li><strong>«میراث سکوت»:</strong> تریلر تاریخی-معمایی که آرش را از لندن به تهران می‌برد — از مسیر استانبول. او با رازهایی از ساسانیان، زکریای رازی، و ملکم خان روبرو می‌شود.</li>
+                <li><strong>«آن سوی خاموشی»:</strong> درام تاریخی-تریلر در بستر انقلاب اسلامی. داستان مردی که همسر و دخترش را از دست می‌دهد و به دنبال حقیقت می‌گردد.</li>
+              </ul>
+              <p>هدفم این است که تاریخ را به یک ماجراجویی تبدیل کنم — نه درس.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section id="books">
     <div class="container">
-      <div class="divider"><span class="section-label">بخش دوم · آثار</span></div>
-      <h2 class="section-title reveal">کتاب‌ها</h2>
-      <p class="section-desc reveal">هر رمان، دریچه‌ای به دنیایی پنهان. یکی را برگزین تا بایگانی گشوده شود.</p>
+      <div class="divider"><span class="section-label">آثار</span></div>
+      <h2 class="section-title">کتاب‌ها</h2>
+      <p class="section-desc">هر رمان، دریچه‌ای به دنیایی پنهان.</p>
 
       <div class="books-grid">
-        <div class="book-card reveal">
+        <div class="book-card">
           <div class="book-cover">میراث<br>سکوت</div>
           <div class="book-info">
             <h3>میراث سکوت</h3>
             <div class="genre">تریلر تاریخی · معمایی</div>
-            <p>آرش، جوانی سی‌وچندساله، بیشتر عمر خود را در لندن و با هویتی مخفی سپری کرده است. ناگهان خود را در مرکز ماجرایی می‌بیند که گروه‌های مخفی مختلفی به دنبال سر در آوردن از آن هستند. سفری پرماجرا از لندن به سوی تهران، از مسیر استانبول — نه تنها سفری جغرافیایی، بلکه سفری تاریخی و روحانی. در این مسیر، لایه به لایه از رازی باستانی برایش گشوده می‌شود: از دوران ساسانیان و مزدک پیامبر، تا زکریای رازی، و در نهایت ملکم خان ناظم‌الدوله در دوران قاجار.</p>
+            <p>آرش، جوانی سی‌وپنج ساله، بیشتر عمر خود را در لندن و با هویتی مخفی سپری کرده است. ناگهان خود را در مرکز ماجرایی می‌بیند که گروه‌های مخفی مختلفی به دنبال سر در آوردن از آن هستند. سفری پرماجرا از لندن به سوی تهران، از مسیر استانبول — نه تنها سفری جغرافیایی، بلکه سفری تاریخی و روحانی. در این مسیر، لایه به لایه از رازی باستانی برایش گشوده می‌شود: از دوران ساسانیان و مزدک پیامبر، تا زکریای رازی، و در نهایت ملکم خان ناظم‌الدوله در دوران قاجار.</p>
           </div>
         </div>
 
-        <div class="book-card reveal">
+        <div class="book-card">
           <div class="book-cover upcoming">آن سوی<br>خاموشی</div>
           <div class="book-info">
             <h3>آن سوی خاموشی</h3>
             <div class="genre">درام تاریخی · به‌زودی</div>
-            <p>مرد میانسالی در ایرانِ پیش از انقلاب، زندگی آرام و شادی را در کنار همسر و دخترش سپری می‌کند. اما ناگهان، در طوفانی از اتفاقات، همسر و دخترش را از دست می‌دهد. حالا، در ابتدای انقلاب اسلامی، در میانه‌ی آشوبی که کشور را در خود بلعیده، او تنها مانده است. اما تسلیم نمی‌شود. در مسیری پر پیچ‌وخم، به دنبال ردی از آن دو می‌گردد — و به دنبال کسانی که این بلا را به سر زندگی‌اش آوردند.</p>
+            <p>مرد میانسالی در ایرانِ پیش از انقلاب، زندگی آرام و شادی را در کنار همسر و دخترش سپری می‌کند. اما ناگهان، در طوفانی از اتفاقات، همسر و دخترش را از دست می‌دهد. حالا، در ابتدای انقلاب اسلامی، او تنها مانده است. اما تسلیم نمی‌شود. در مسیری پر پیچ‌وخم، به دنبال ردی از آن دو می‌گردد — و به دنبال کسانی که این بلا را بر سر زندگی‌اش آوردند.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ ABOUT ============ -->
   <section class="about-section" id="about">
     <div class="container">
-      <div class="divider"><span class="section-label">بخش اول · نویسنده</span></div>
-      <h2 class="section-title reveal">درباره‌ی نویسنده</h2>
+      <div class="divider"><span class="section-label">نویسنده</span></div>
+      <h2 class="section-title">درباره‌ی نویسنده</h2>
 
       <div class="about-grid">
-        <div class="about-portrait reveal">ع</div>
-        <div class="about-text reveal">
-          <p>علی رضائی در سال ۱۳۶۸ در شاهرود زاده شد. کودکی و نوجوانی‌اش در شهری گذشت که خود، لایه‌هایی از تاریخ را در دل خود جای داده است — شهری در مسیر جاده‌ی ابریشم، با پیشینه‌ای که تا هزاران سال پیش بازمی‌گردد.</p>
-          <p>از سال ۱۳۸۷، راهی دانشگاه شهید باهنر کرمان شد و در رشته‌ی مهندسی صنایع به تحصیل پرداخت. اما در همان سال‌های دانشجویی، چیزی دیگر در جانش جوانه می‌زد: عشق به ادبیات و داستان. متن‌های زیادی نوشت — داستان‌های کوتاه، یادداشت‌ها، و نخستین تلاش‌هایش برای نوشتن رمان. یکی از این تلاش‌ها، داستانی ناتمام بود که سال‌ها بعد، به رمان دوم او، «آن سوی خاموشی»، تبدیل می‌شد.</p>
-          <p>در سال ۱۳۹۲، برای ادامه‌ی تحصیل در مقطع کارشناسی ارشد مدیریت کسب‌وکار به دانشگاه پیام نور رفت و مدرک خود را دریافت کرد. سال بعد، در ۱۳۹۳، استخدام بانک سپه شهرستان شاهرود شد و اکنون در سرپرستی بانک سپه منطقه سمنان مشغول به فعالیت است.</p>
-          <p>اما در پسِ این زندگی رسمی، زندگی دیگری در جریان بود — زندگی‌ای که با مطالعه‌ی تاریخ ایران، تاریخ ادیان، و آثار نویسندگانی چون دن براون و جی.کی. رولینگ شکل گرفته بود. خواندن چندباره‌ی داستان‌های این نویسندگان در دوران نوجوانی، شاکله‌ی ذهنی نویسندگی او را ساخت. فیلم‌ها و سریال‌هایی از سه‌گانه‌ی پدرخوانده تا Gravity Falls، Avatar: The Legend of Korra، Better Call Saul و Black Sails نیز بر ذهن او تأثیر عمیقی گذاشتند — هر کدام، درس‌هایی درباره‌ی روایت، شخصیت‌پردازی، و ساختار داستان.</p>
-          <p>از نوجوانی، علاقه‌ی فراوانی به مطالعه‌ی آثار تاریخی، به‌ویژه تاریخ ادیان، داشت. بیشتر وقت خود را صرف مطالعه در خصوص تاریخ ایران و دیگر نقاط جهان می‌کرد — از ساسانیان و مزدک تا دوران قاجار و تحولات مدرن.</p>
-          <p>در نهایت، در سال ۱۴۰۳، این علاقه‌ی مشترک به نویسندگی و تاریخ ایران و ادیان، جرقه‌ی نوشتن رمانی را زد که عصاره‌ای از تاریخ ایران در چند برهه بود — در قالب داستانی ماجرایی و معمایی. این رمان، «میراث سکوت» نام گرفت.</p>
-          <p>در سال ۱۴۰۵، نوشتن و چاپ این رمان به انتها رسید. همزمان، کار بر روی رمان دوم، «آن سوی خاموشی»، آغاز گشت — بازگشتی به داستانی ناتمام از دوران دانشجویی، اما این بار با پختگی سال‌ها مطالعه و تجربه.</p>
-          <p>علی رضائی اکنون در سمنان زندگی می‌کند. در روز، در دنیای اعداد و ارقام بانک کار می‌کند. در شب، در دنیای داستان‌ها، نامه‌های هرگز ارسال‌شده، و رازهایی که قرن‌ها در سکوت مانده‌اند.</p>
+        <div class="about-portrait">ع</div>
+        <div class="about-text">
+          <p>علی رضائی در سال ۱۳۶۸ در شاهرود زاده شد. کودکی و نوجوانی‌اش در شهری گذشت که خود، لایه‌هایی از تاریخ را در دل خود جای داده است — شهری در مسیر جاده‌ی ابریشم.</p>
+          <p>از سال ۱۳۸۷، راهی دانشگاه شهید باهنر کرمان شد و در رشته‌ی مهندسی صنایع به تحصیل پرداخت. اما در همان سال‌های دانشجویی، عشق به ادبیات و داستان در جانش ریشه دواند. متن‌های زیادی نوشت — و نخستین تلاش‌هایش برای نوشتن رمان. یکی از این تلاش‌ها، داستانی ناتمام بود که سال‌ها بعد، به رمان دوم او، «آن سوی خاموشی»، تبدیل می‌شد.</p>
+          <p>در سال ۱۳۹۲، برای ادامه‌ی تحصیل در مقطع کارشناسی ارشد مدیریت کسب‌وکار به دانشگاه پیام نور رفت. سال بعد، در ۱۳۹۳، استخدام بانک سپه شهرستان شاهرود شد و اکنون در سرپرستی بانک سپه منطقه سمنان مشغول به فعالیت است.</p>
+          <p>اما در پسِ این زندگی رسمی، زندگی دیگری در جریان بود — زندگی‌ای که با مطالعه‌ی تاریخ ایران، تاریخ ادیان، و آثار نویسندگانی چون دن براون و جی.کی. رولینگ شکل گرفته بود. خواندن چندباره‌ی داستان‌های این نویسندگان در دوران نوجوانی، شاکله‌ی ذهنی نویسندگی او را ساخت.</p>
+          <p>از نوجوانی، علاقه‌ی فراوانی به مطالعه‌ی آثار تاریخی، به‌ویژه تاریخ ادیان، داشت. بیشتر وقت خود را صرف مطالعه در خصوص تاریخ ایران و دیگر نقاط جهان می‌کرد — از ساسانیان و مزدک تا دوران قاجار.</p>
+          <p>در نهایت، در سال ۱۴۰۳، این علاقه‌ی مشترک به نویسندگی و تاریخ ایران و ادیان، جرقه‌ی نوشتن رمانی را زد که عصاره‌ای از تاریخ ایران در چند برهه بود. این رمان، «میراث سکوت» نام گرفت.</p>
+          <p>در سال ۱۴۰۵، نوشتن و چاپ این رمان به انتها رسید. همزمان، کار بر روی رمان دوم، «آن سوی خاموشی»، آغاز گشت — بازگشتی به داستانی ناتمام از دوران دانشجویی.</p>
+          <p>علی رضائی اکنون در سمنان زندگی می‌کند. در روز، در دنیای اعداد و ارقام بانک کار می‌کند. در شب، در دنیای داستان‌ها، نامه‌های هرگز ارسال‌ نشده، و رازهایی که قرن‌ها در سکوت مانده‌اند.</p>
         </div>
       </div>
 
-      <!-- Philosophy -->
-      <div class="philosophy reveal">
+      <div class="philosophy">
         <div class="section-label" style="margin-bottom: 2rem;">فلسفه‌ی نوشتن</div>
-        <blockquote>
-          «من از تاریخ می‌نویسم — اما نه آن تاریخی که در کتاب‌های درسی آمده است. من از لایه‌های پنهان تاریخ می‌نویسم: از نامه‌هایی که هرگز ارسال نشدند، از رازهایی که در سکوت خاک خوردند، از شخصیت‌هایی که در حاشیه‌ی تاریخ زندگی کردند و رفتند.
-          
-          برای من، نویسندگی نوعی باستان‌شناسی است. هر رمان، ویرانه‌ای است که باید بازسازی شود — سنگ به سنگ، واژه به واژه. و در این بازسازی، مرز میان تاریخ و داستان محو می‌شود.
-          
-          من از دن براون آموختم که چگونه تاریخ را به ماجرا تبدیل کنم. از جی.کی. رولینگ آموختم که چگونه دنیایی بسازم که خواننده در آن گم شود. از پدرخوانده آموختم که قدرت، چگونه خانواده‌ها را می‌سازد و ویران می‌کند. از Gravity Falls آموختم که رازها، چگونه نسل‌ها را به هم پیوند می‌زنند.
-          
-          اما بیش از همه، از تاریخ ایران آموختم — از ساسانیان تا قاجار، از مزدک تا ملکم خان — که هر دوره، لایه‌ای از یک راز بزرگ‌تر است. و این راز، هنوز کشف نشده است.
-          
-          من می‌نویسم تا این راز را کشف کنم. و شما را نیز به این کشف دعوت کنم.»
-        </blockquote>
+        <blockquote>«من از تاریخ می‌نویسم — اما نه آن تاریخی که در کتاب‌های درسی آمده است. من از لایه‌های پنهان تاریخ می‌نویسم: از نامه‌هایی که هرگز ارسال نشدند، از رازهایی که در سکوت خاک خوردند، از شخصیت‌هایی که در حاشیه‌ی تاریخ زندگی کردند و رفتند. برای من، نویسندگی نوعی باستان‌شناسی است. هر رمان، ویرانه‌ای است که باید بازسازی شود — سنگ به سنگ، واژه به واژه.»</blockquote>
         <cite>— علی رضائی</cite>
       </div>
 
-      <!-- Influences -->
-      <div style="margin-top: 5rem;">
-        <div class="divider"><span class="section-label">تأثیرگذاران</span></div>
-        <div class="influences-grid">
-          <div class="influence-card reveal">
-            <div class="influence-cat">نویسندگان</div>
-            <div class="influence-name">دن براون</div>
-            <div class="influence-note">ترکیب تاریخ، رمز، و ماجراجویی</div>
-          </div>
-          <div class="influence-card reveal">
-            <div class="influence-cat">نویسندگان</div>
-            <div class="influence-name">جی.کی. رولینگ</div>
-            <div class="influence-note">دنیاسازی و شخصیت‌پردازی عمیق</div>
-          </div>
-          <div class="influence-card reveal">
-            <div class="influence-cat">سینما</div>
-            <div class="influence-name">سه‌گانه‌ی پدرخوانده</div>
-            <div class="influence-note">قدرت، خانواده، و خیانت</div>
-          </div>
-          <div class="influence-card reveal">
-            <div class="influence-cat">سریال</div>
-            <div class="influence-name">Gravity Falls</div>
-            <div class="influence-note">رازهای چندلایه و پیوند نسل‌ها</div>
-          </div>
-          <div class="influence-card reveal">
-            <div class="influence-cat">سریال</div>
-            <div class="influence-name">Avatar: The Legend of Korra</div>
-            <div class="influence-note">دنیاسازی و تحول شخصیت</div>
-          </div>
-          <div class="influence-card reveal">
-            <div class="influence-cat">سریال</div>
-            <div class="influence-name">Better Call Saul</div>
-            <div class="influence-note">پیچیدگی اخلاقی و سقوط تدریجی</div>
-          </div>
-          <div class="influence-card reveal">
-            <div class="influence-cat">سریال</div>
-            <div class="influence-name">Black Sails</div>
-            <div class="influence-note">تاریخ، ماجراجویی، و شخصیت‌های خاکستری</div>
-          </div>
-          <div class="influence-card reveal">
-            <div class="influence-cat">پژوهش</div>
-            <div class="influence-name">تاریخ ایران</div>
-            <div class="influence-note">از باستان تا معاصر</div>
-          </div>
-          <div class="influence-card reveal">
-            <div class="influence-cat">پژوهش</div>
-            <div class="influence-name">تاریخ ادیان</div>
-            <div class="influence-note">ادیان ایرانی و جنبش‌های اجتماعی</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Timeline -->
       <div style="margin-top: 5rem;">
         <div class="divider"><span class="section-label">خط زمان</span></div>
         <div class="timeline">
-          <div class="timeline-item reveal">
+          <div class="timeline-item">
             <div class="timeline-year">۱۳۶۸</div>
             <div class="timeline-title">تولد در شاهرود</div>
-            <div class="timeline-desc">در شهری که خود، لایه‌هایی از تاریخ را در دل خود جای داده است — شهری در مسیر جاده‌ی ابریشم.</div>
+            <div class="timeline-desc">در شهری در مسیر جاده‌ی ابریشم.</div>
           </div>
-          <div class="timeline-item reveal">
+          <div class="timeline-item">
             <div class="timeline-year">۱۳۸۷</div>
             <div class="timeline-title">ورود به دانشگاه شهید باهنر کرمان</div>
-            <div class="timeline-desc">رشته‌ی مهندسی صنایع. اما در همان سال‌های دانشجویی، عشق به ادبیات و داستان در جانش ریشه دواند.</div>
+            <div class="timeline-desc">رشته‌ی مهندسی صنایع. آغاز عشق به ادبیات و داستان.</div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-year">۱۳۸۷-۱۳۹۱</div>
-            <div class="timeline-title">دوران دانشجویی</div>
-            <div class="timeline-desc">آغاز نوشتن متن‌های ادبی؛ شروع رمان ناتمامی که سال‌ها بعد به «آن سوی خاموشی» تبدیل می‌شود.</div>
-          </div>
-          <div class="timeline-item reveal">
+          <div class="timeline-item">
             <div class="timeline-year">۱۳۹۲</div>
             <div class="timeline-title">کارشناسی ارشد مدیریت کسب‌وکار</div>
-            <div class="timeline-desc">در دانشگاه پیام نور. دریافت مدرک و ورود به دنیای حرفه‌ای.</div>
+            <div class="timeline-desc">در دانشگاه پیام نور.</div>
           </div>
-          <div class="timeline-item reveal">
+          <div class="timeline-item">
             <div class="timeline-year">۱۳۹۳</div>
             <div class="timeline-title">استخدام در بانک سپه</div>
-            <div class="timeline-desc">شهرستان شاهرود. آغاز زندگی رسمی در دنیای اعداد و ارقام.</div>
+            <div class="timeline-desc">شهرستان شاهرود.</div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-year">۱۳۹۳-۱۴۰۲</div>
-            <div class="timeline-title">سال‌ها مطالعه و پژوهش</div>
-            <div class="timeline-desc">مطالعه‌ی عمیق تاریخ ایران، تاریخ ادیان، و آثار ادبی جهان. از ساسانیان و مزدک تا دوران قاجار.</div>
-          </div>
-          <div class="timeline-item reveal">
+          <div class="timeline-item">
             <div class="timeline-year">۱۴۰۳</div>
             <div class="timeline-title">جرقه‌ی «میراث سکوت»</div>
-            <div class="timeline-desc">ترکیب علاقه به نویسندگی و تاریخ ایران و ادیان، جرقه‌ی نوشتن رمانی را زد که عصاره‌ای از تاریخ ایران در چند برهه بود.</div>
+            <div class="timeline-desc">ترکیب علاقه به نویسندگی و تاریخ ایران و ادیان.</div>
           </div>
-          <div class="timeline-item reveal">
+          <div class="timeline-item">
             <div class="timeline-year">۱۴۰۵</div>
             <div class="timeline-title">چاپ «میراث سکوت»</div>
-            <div class="timeline-desc">پایان دو سال نوشتن و بازنویسی. انتشار رمان توسط انتشارات متخصص.</div>
+            <div class="timeline-desc">انتشار رمان توسط انتشارات متخصصان.</div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-year">۱۴۰۵</div>
-            <div class="timeline-title">آغاز «آن سوی خاموشی»</div>
-            <div class="timeline-desc">بازگشت به داستانی ناتمام از دوران دانشجویی، اما این بار با پختگی سال‌ها مطالعه و تجربه.</div>
-          </div>
-          <div class="timeline-item reveal">
+          <div class="timeline-item">
             <div class="timeline-year">اکنون</div>
-            <div class="timeline-title">سرپرستی بانک سپه منطقه سمنان</div>
-            <div class="timeline-desc">در روز، در دنیای اعداد و ارقام بانک. در شب، در دنیای داستان‌ها و رازهایی که قرن‌ها در سکوت مانده‌اند.</div>
+            <div class="timeline-title">شاغل در سرپرستی بانک سپه منطقه سمنان</div>
+            <div class="timeline-desc">و نوشتن رمان دوم.</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ ARCHIVE ============ -->
   <section class="archive-section" id="archive">
-    <div class="container" style="position: relative;">
-      <div class="divider"><span class="section-label">دسترسی محدود · ویژه‌ی خوانندگان</span></div>
-      <h2 class="section-title reveal">بایگانی</h2>
-      <p class="section-desc reveal">مجموعه‌ای از نقشه‌ها، دست‌نوشته‌ها، شجره‌نامه‌ها و اشیایی که در دل رمان‌ها پنهان شده‌اند. برخی پرونده‌ها هنوز مهر و موم‌اند.</p>
+    <div class="container">
+      <div class="divider"><span class="section-label">دسترسی محدود</span></div>
+      <h2 class="section-title">بایگانی</h2>
+      <p class="section-desc">مجموعه‌ای از نقشه‌ها، دست‌نوشته‌ها، شجره‌نامه‌ها و اشیایی که در دل رمان‌ها پنهان شده‌اند.</p>
 
       <div class="archive-tabs" id="archiveTabs">
         <button class="archive-tab active" data-filter="all">همه</button>
@@ -1486,93 +255,233 @@
         <button class="archive-tab" data-filter="documents">اسناد</button>
         <button class="archive-tab" data-filter="family">شجره‌نامه‌ها</button>
         <button class="archive-tab" data-filter="objects">اشیاء</button>
-        <button class="archive-tab" data-filter="symbols">نمادها</button>
-        <button class="archive-tab" data-filter="research">یادداشت‌های پژوهشی</button>
       </div>
 
       <div class="archive-grid" id="archiveGrid">
-        <div class="archive-item reveal" data-cat="maps">
+        <div class="archive-item" data-cat="maps">
           <div>
             <div class="cat">نقشه</div>
             <div class="catalog-no">#M-001</div>
           </div>
           <h4>نقشه مسیر آرش: لندن — استانبول — تهران</h4>
         </div>
-        <div class="archive-item reveal" data-cat="documents">
+        <div class="archive-item" data-cat="documents">
           <div>
             <div class="cat">سند</div>
             <div class="catalog-no">#D-017</div>
           </div>
           <h4>نامه‌ی هرگز ارسال‌نشده</h4>
-          <div class="sealed">🔒 مهر و موم شده</div>
+          <div class="sealed">مهر و موم شده</div>
         </div>
-        <div class="archive-item reveal" data-cat="family">
+        <div class="archive-item" data-cat="family">
           <div>
             <div class="cat">شجره‌نامه</div>
             <div class="catalog-no">#F-003</div>
           </div>
           <h4>خاندان آرش</h4>
         </div>
-        <div class="archive-item reveal" data-cat="objects">
+        <div class="archive-item" data-cat="objects">
           <div>
             <div class="cat">شیء</div>
             <div class="catalog-no">#O-009</div>
           </div>
           <h4>مُهر کاتب خاموش</h4>
         </div>
-        <div class="archive-item reveal" data-cat="symbols">
-          <div>
-            <div class="cat">نماد</div>
-            <div class="catalog-no">#S-022</div>
-          </div>
-          <h4>نشان انجمن خاموشان</h4>
-          <div class="sealed">🔒 تفسیر محرمانه</div>
-        </div>
-        <div class="archive-item reveal" data-cat="maps">
-          <div>
-            <div class="cat">نقشه</div>
-            <div class="catalog-no">#M-014</div>
-          </div>
-          <h4>نقشه‌ی ایران در دوران ساسانی</h4>
-        </div>
-        <div class="archive-item reveal" data-cat="research">
-          <div>
-            <div class="cat">پژوهش</div>
-            <div class="catalog-no">#R-041</div>
-          </div>
-          <h4>یادداشت‌های پژوهشی درباره‌ی مزدک</h4>
-        </div>
-        <div class="archive-item reveal" data-cat="documents">
-          <div>
-            <div class="cat">سند</div>
-            <div class="catalog-no">#D-033</div>
-          </div>
-          <h4>یادداشت‌های ملکم خان ناظم‌الدوله</h4>
-        </div>
-        <div class="archive-item reveal" data-cat="research">
-          <div>
-            <div class="cat">پژوهش</div>
-            <div class="catalog-no">#R-058</div>
-          </div>
-          <h4>مطالعه‌ی تطبیقی: زکریای رازی و علم باستانی</h4>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ JOURNAL ============ -->
   <section id="journal">
     <div class="container">
-      <div class="divider"><span class="section-label">بخش چهارم · یادداشت‌های میدانی</span></div>
-      <h2 class="section-title reveal">یادداشت‌ها و مقالات</h2>
-      <p class="section-desc reveal">تأملاتی درباره‌ی تاریخ، نوشتن، پژوهش، و کتاب‌هایی که مسیرم را ساختند.</p>
+      <div class="divider"><span class="section-label">یادداشت‌ها</span></div>
+      <h2 class="section-title">یادداشت‌ها و مقالات</h2>
+      <p class="section-desc">تأملاتی درباره‌ی تاریخ، نوشتن، پژوهش و کتاب‌هایی که مسیرم را ساختند.</p>
 
       <div class="journal-list">
-        <article class="journal-item reveal">
+        <article class="journal-item">
           <div>
             <div class="journal-date">۲۵ تیر ۱۴۰۵</div>
             <div class="journal-cat">تاریخ</div>
           </div>
           <div>
             <h3 class="journal-title">چرا تاریخ ایران، بهترین مواد اولیه‌ی یک تریلر است</h3>
-            <p class="journal-excerpt">ایران، سرزمینی است که هر لایه‌اش، رازی را در خود جای داده است. از ساسانیان تا قاجار، از مزدک تا ملکم خان — هر دوره، داستانی ناتمام است که چشم به راه روایتگر خود می‌نگرد. تاریخ ایران، پر از لحظاتی است که در آن‌ها حقیقت و افسانه در هم می‌آمیزند، و این دقیقاً همان جایی است که تریلر متولد می‌شود: در مرز میان آن‌چه اتفاق افتاد و آن‌چه می‌توانست اتفاق بیفتد. وقتی
+            <p class="journal-excerpt">ایران، سرزمینی است که هر لایه‌اش، رازی را در خود جای داده است. از ساسانیان تا قاجار، از مزدک تا ملکم خان — هر دوره، داستانی ناتمام است. تاریخ ایران، پر از لحظاتی است که در آن‌ها حقیقت و افسانه در هم می‌آمیزند، و این دقیقاً همان جایی است که تریلر متولد می‌شود.</p>
+          </div>
+        </article>
+
+        <article class="journal-item">
+          <div>
+            <div class="journal-date">۱۸ تیر ۱۴۰۵</div>
+            <div class="journal-cat">نوشتن</div>
+          </div>
+          <div>
+            <h3 class="journal-title">از مهندسی تا نویسندگی: چگونه اعداد به واژه‌ها تبدیل شدند</h3>
+            <p class="journal-excerpt">وقتی می‌گویم مهندس صنایعم، خیلی‌ها تعجب می‌کنند. اما برای من، این دو دنیا چندان دور از هم نیستند. مهندسی صنایع، علم بهینه‌سازی سیستم‌هاست. و نویسندگی نیز نوعی بهینه‌سازی است: یافتن بهترین واژه، بهترین ساختار، بهترین لحظه برای آشکار کردن یک راز.</p>
+          </div>
+        </article>
+
+        <article class="journal-item">
+          <div>
+            <div class="journal-date">۱۱ تیر ۱۴۰۵</div>
+            <div class="journal-cat">پژوهش</div>
+          </div>
+          <div>
+            <h3 class="journal-title">مزدک: نخستین انقلابی تاریخ ایران</h3>
+            <p class="journal-excerpt">مزدک، پیامبری بود در دوران ساسانی که ایده‌ای ساده اما انقلابی داشت: برابری. او می‌گفت ثروت باید تقسیم شود. این ایده، در قرن پنجم میلادی، چنان خطرناک بود که پادشاه ساسانی ابتدا از او حمایت کرد، اما سپس بر ضدش شورید. اما ایده نمرد — در قرن‌های بعد، جنبش‌های بسیاری از دل همین ایده سر برآوردند.</p>
+          </div>
+        </article>
+
+        <article class="journal-item">
+          <div>
+            <div class="journal-date">۴ تیر ۱۴۰۵</div>
+            <div class="journal-cat">تأثیر</div>
+          </div>
+          <div>
+            <h3 class="journal-title">چگونه دن براون و جی.کی. رولینگ نویسنده‌ام کردند</h3>
+            <p class="journal-excerpt">در نوجوانی، «داوینچی کد» را برای نخستین بار خواندم. آن کتاب، چیزی را در من بیدار کرد: لذت کشف. دن براون به من آموخت که تاریخ می‌تواند مثل یک راز عمل کند. و جی.کی. رولینگ، با «هری پاتر»، به من نشان داد که می‌توان دنیایی ساخت که خواننده در آن گم شود.</p>
+          </div>
+        </article>
+
+        <article class="journal-item">
+          <div>
+            <div class="journal-date">۲۸ خرداد ۱۴۰۵</div>
+            <div class="journal-cat">پشت صحنه</div>
+          </div>
+          <div>
+            <h3 class="journal-title">سفر آرش: از لندن تا تهران، یک سفر تاریخی</h3>
+            <p class="journal-excerpt">وقتی تصمیم گرفتم شخصیت اصلی «میراث سکوت» را از لندن به تهران بفرستم، می‌دانستم که این فقط یک سفر جغرافیایی نیست. آرش باید از لندنِ مدرن می‌گذشت، به استانبول می‌رسید، و سپس به تهران. هر شهر، یک دوره‌ی تاریخی را بازمی‌نمود.</p>
+          </div>
+        </article>
+
+        <article class="journal-item">
+          <div>
+            <div class="journal-date">۱۵ خرداد ۱۴۰۵</div>
+            <div class="journal-cat">سینما</div>
+          </div>
+          <div>
+            <h3 class="journal-title">رازهای خانوادگی در ادبیات: از پدرخوانده تا میراث سکوت</h3>
+            <p class="journal-excerpt">سه‌گانه‌ی پدرخوانده، برای من فقط یک فیلم نیست — یک درس‌نامه‌ی روایت است. کاپوئولا به من آموخت که چگونه قدرت، خانواده‌ها را می‌سازد و ویران می‌کند. در «میراث سکوت»، آرش با رازی روبرو می‌شود که نه تنها زندگی خودش، بلکه زندگی خاندانش را در بر می‌گیرد.</p>
+          </div>
+        </article>
+
+        <article class="journal-item">
+          <div>
+            <div class="journal-date">۱ خرداد ۱۴۰۵</div>
+            <div class="journal-cat">شهر</div>
+          </div>
+          <div>
+            <h3 class="journal-title">تهران در ادبیات: شهری که هر کوچه‌اش یک راز است</h3>
+            <p class="journal-excerpt">تهران، شهری است که در آن هر کوچه، یک راز را در خود جای داده است. وقتی «میراث سکوت» را می‌نوشتم، تهران برایم فقط یک پس‌زمینه نبود — یک شخصیت بود. شهری که رازهایش را به کسانی نشان می‌دهد که می‌دانند چگونه بپرسند.</p>
+          </div>
+        </article>
+
+        <article class="journal-item">
+          <div>
+            <div class="journal-date">۲۰ اردیبهشت ۱۴۰۵</div>
+            <div class="journal-cat">زندگی</div>
+          </div>
+          <div>
+            <h3 class="journal-title">چگونه یک بانکدار، رمان می‌نویسد</h3>
+            <p class="journal-excerpt">خیلی‌ها می‌پرسند: چطور می‌توانی در بانک کار کنی و رمان بنویسی؟ جواب ساده است: شب‌ها. وقتی بانک تعطیل می‌شود، دنیای دیگری آغاز می‌شود — دنیای داستان‌ها، نامه‌های هرگز ارسال‌ نشده، و رازهایی که قرن‌ها در سکوت مانده‌اند.</p>
+          </div>
+        </article>
+
+        <article class="journal-item">
+          <div>
+            <div class="journal-date">۱۰ اردیبهشت ۱۴۰۵</div>
+            <div class="journal-cat">پژوهش</div>
+          </div>
+          <div>
+            <h3 class="journal-title">تاریخ ادیان و ادبیات معمایی: پیوندی دیرینه</h3>
+            <p class="journal-excerpt">از نوجوانی، علاقه‌ی فراوانی به تاریخ ادیان داشتم. و هرچه بیشتر مطالعه می‌کردم، بیشتر می‌فهمیدم که ادیان، پر از رازها، نمادها، و داستان‌های ناتمام‌اند. این دقیقاً همان چیزی است که ادبیات معمایی نیاز دارد: رازهایی که هرگز کامل گشوده نمی‌شوند.</p>
+          </div>
+        </article>
+
+        <article class="journal-item">
+          <div>
+            <div class="journal-date">۲۵ فروردین ۱۴۰۵</div>
+            <div class="journal-cat">پشت صحنه</div>
+          </div>
+          <div>
+            <h3 class="journal-title">آن سوی خاموشی: چرا بازگشت به داستان ناتمام؟</h3>
+            <p class="journal-excerpt">«آن سوی خاموشی» در واقع تکمیل داستان ناتمامی است که در سال دوم دانشگاه شروع کردم. چرا بعد از سال‌ها به آن بازگشتم؟ چون آن داستان، بخشی از من بود که هرگز کامل نشده بود. و حالا، با پختگی سال‌ها مطالعه و تجربه، می‌توانم آن را کامل کنم.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter-section" id="newsletter">
+    <div class="container">
+      <div class="section-label">حلقه‌ی درونی</div>
+      <h2 class="section-title">بایگانی خصوصی</h2>
+      <p class="newsletter-desc">مشترکان، صحنه‌های حذف‌شده، فصل‌های اضافی، یادداشت‌های پژوهشی و اطلاع‌رسانی زودهنگام درباره‌ی انتشارات جدید را دریافت می‌کنند.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="ایمیل شما" required>
+        <button type="submit">عضویت</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="divider"><span class="section-label">بخش نهم · مکاتبات</span></div>
+      <h2 class="section-title">تماس</h2>
+      <p class="section-desc">برای پرسش‌های مطبوعاتی، حقوق ترجمه، یا پیام خوانندگان.</p>
+
+      <div class="contact-grid">
+        <div>
+          <div class="contact-block">
+            <div class="label">ناشر</div>
+            <span><a href="https://www.motekhassesan.com/">انتشارات متخصصان</a></span>
+          </div>
+          <div class="contact-block">
+            <div class="label">ایمیل نویسنده</div>
+            <a href="mailto:rezaei_ali@rocketmail.com">rezaei_ali@rocketmail.com</a>
+          </div>
+          <div class="contact-block">
+            <div class="label">شبکه‌های اجتماعی</div>
+            <span>به‌زودی اضافه خواهد شد</span>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <input type="text" placeholder="نام شما" required>
+          <input type="email" placeholder="ایمیل شما" required>
+          <input type="text" placeholder="موضوع">
+          <textarea placeholder="پیام شما..." required></textarea>
+          <button type="submit">ارسال نامه</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">علی رضائی</div>
+      <p>نویسنده. پژوهشگر. نگهبان داستان‌های فراموش‌شده.</p>
+    </div>
+    <div class="footer-col">
+      <h4>ناوبری</h4>
+      <ul>
+        <li><a href="#books">آثار</a></li>
+        <li><a href="#archive">بایگانی</a></li>
+        <li><a href="#journal">یادداشت‌ها</a></li>
+        <li><a href="#contact">تماس</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>ارتباط</h4>
+      <ul>
+        <li><a href="mailto:rezaei_ali@rocketmail.com">ایمیل</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© ۱۴۰۵ علی رضائی · تمامی داستان‌ها محفوظ است</div>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>
