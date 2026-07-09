@@ -11,103 +11,102 @@ document.addEventListener('DOMContentLoaded', () => {
   initArchiveFilter();
   initAccordion();
   initForms();
-  initBackToTop();
-  initEasterEgg();
-  initLazyLoad();
-});
+  function initForms() {
+    // Newsletter form (posts to configured action)
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-// ============ HEADER SCROLL EFFECT ============
-function initHeader() {
-  const header = document.getElementById('header');
-  let lastScroll = 0;
+        const button = newsletterForm.querySelector('button');
+        const originalText = button.textContent;
+        const formData = new FormData(newsletterForm);
+        const email = formData.get('email');
 
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    // Add scrolled class
-    if (currentScroll > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+        if (!email) {
+          showMessage('لطفاً ایمیل خود را وارد کنید.', 'error');
+          return;
+        }
+
+        if (!isValidEmail(email)) {
+          showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
+          return;
+        }
+
+        button.textContent = 'در حال ثبت...';
+        button.disabled = true;
+
+        try {
+          const response = await fetch(newsletterForm.action || '/', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            showMessage('ایمیل شما در حلقه‌ی درونی ثبت شد.', 'success');
+            newsletterForm.reset();
+          } else {
+            showMessage('ثبت نام با مشکل مواجه شد. لطفاً دوباره تلاش کنید.', 'error');
+          }
+        } catch (err) {
+          showMessage('خطا در ارتباط با سرور.', 'error');
+        } finally {
+          button.textContent = originalText;
+          button.disabled = false;
+        }
+      });
     }
-    
-    lastScroll = currentScroll;
-  }, { passive: true });
-}
 
-// ============ MOBILE MENU ============
-function initMobileMenu() {
-  const menuToggle = document.getElementById('menuToggle');
-  const nav = document.getElementById('nav');
-  
-  if (!menuToggle || !nav) return;
+    // Contact form (posts to Formspree)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', nav.classList.contains('open'));
-  });
+        const button = contactForm.querySelector('button');
+        const originalText = button.textContent;
 
-  // Close menu when clicking on a link
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+        const formData = new FormData(contactForm);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const message = formData.get('message');
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
-      nav.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
+        if (!name || !email || !message) {
+          showMessage('لطفاً تمام فیلدها را پر کنید.', 'error');
+          return;
+        }
+
+        if (!isValidEmail(email)) {
+          showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
+          return;
+        }
+
+        button.textContent = 'در حال ارسال...';
+        button.disabled = true;
+
+        try {
+          const response = await fetch(contactForm.action || '/', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            showMessage('پیام شما دریافت شد. به‌زودی پاسخ خواهید گرفت.', 'success');
+            contactForm.reset();
+          } else {
+            showMessage('خطا در ارسال. لطفاً دوباره تلاش کنید.', 'error');
+          }
+        } catch (err) {
+          showMessage('خطا در ارتباط با سرور.', 'error');
+        } finally {
+          button.textContent = originalText;
+          button.disabled = false;
+        }
+      });
     }
-  });
-}
-
-// ============ SMOOTH SCROLL ============
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      
-      if (target) {
-        const headerOffset = 80;
-        const elementPosition = target.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-}
-
-// ============ SCROLL REVEAL ANIMATION ============
-function initScrollReveal() {
-  const reveals = document.querySelectorAll('.reveal');
-  
-  if (reveals.length === 0) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Only animate once
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  reveals.forEach(el => observer.observe(el));
-}
-
-// ============ ARCHIVE FILTER ============
-function initArchiveFilter() {
+  }
   const tabs = document.querySelectorAll('.archive-tab');
   const items = document.querySelectorAll('.archive-item');
   
@@ -143,19 +142,86 @@ function initArchiveFilter() {
 
 // ============ FORMS ============
 function initForms() {
+<<<<<<< HEAD
   // Newsletter form (posts to configured action)
   const newsletterForm = document.getElementById('newsletterForm');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', async (e) => {
+=======
+  // Newsletter form
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const button = newsletterForm.querySelector('button');
+      const originalText = button.textContent;
+      const email = newsletterForm.querySelector('input[type="email"]').value;
+      
+      // Validate email
+      if (!isValidEmail(email)) {
+        showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
+        return;
+      }
+      
+      // Show loading state
+      button.textContent = 'در حال ارسال...';
+      button.disabled = true;
+      
+      try {
+        // ارسال به Formspree
+        const response = await fetch('https://formspree.io/f/xykqqbgp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            _subject: 'عضویت در خبرنامه'
+          })
+        });
+        
+        if (response.ok) {
+          showMessage('با تشکر! شما به بایگانی خصوصی اضافه شدید.', 'success');
+          newsletterForm.reset();
+        } else {
+          showMessage('خطا در ارسال. لطفاً دوباره تلاش کنید.', 'error');
+        }
+      } catch (error) {
+        showMessage('خطا در ارتباط با سرور.', 'error');
+      } finally {
+        button.textContent = originalText;
+        button.disabled = false;
+      }
+    });
+  }
+
+  // Contact form
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+>>>>>>> parent of 08fc5ed (اصلاح فرم تماس)
       e.preventDefault();
 
       const button = newsletterForm.querySelector('button');
       const originalText = button.textContent;
+<<<<<<< HEAD
       const formData = new FormData(newsletterForm);
       const email = formData.get('email');
 
       if (!email) {
         showMessage('لطفاً ایمیل خود را وارد کنید.', 'error');
+=======
+      
+      // Validate form
+      const name = contactForm.querySelector('input[type="text"]').value;
+      const email = contactForm.querySelector('input[type="email"]').value;
+      const message = contactForm.querySelector('textarea').value;
+      
+      if (!name || !email || !message) {
+        showMessage('لطفاً تمام فیلدها را پر کنید.', 'error');
+>>>>>>> parent of 08fc5ed (اصلاح فرم تماس)
         return;
       }
 
@@ -163,15 +229,37 @@ function initForms() {
         showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
         return;
       }
+<<<<<<< HEAD
 
       button.textContent = 'در حال ثبت...';
+=======
+      
+      // Show loading state
+      button.textContent = 'در حال ارسال...';
+>>>>>>> parent of 08fc5ed (اصلاح فرم تماس)
       button.disabled = true;
 
       try {
+<<<<<<< HEAD
         const response = await fetch(newsletterForm.action || '/', {
           method: 'POST',
           body: formData,
           headers: { 'Accept': 'application/json' }
+=======
+        // ارسال به Formspree
+        const response = await fetch('https://formspree.io/f/meebbrpv', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message,
+            _subject: 'پیام جدید از سایت'
+          })
+>>>>>>> parent of 08fc5ed (اصلاح فرم تماس)
         });
 
         if (response.ok) {
