@@ -143,52 +143,93 @@ function initArchiveFilter() {
 
 // ============ FORMS ============
 function initForms() {
-  // Contact form
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
+  // Newsletter form (posts to configured action)
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
-      const button = contactForm.querySelector('button');
+
+      const button = newsletterForm.querySelector('button');
       const originalText = button.textContent;
-      
-      // Get form data
-      const formData = new FormData(contactForm);
-      const name = formData.get('name');
+      const formData = new FormData(newsletterForm);
       const email = formData.get('email');
-      const message = formData.get('message');
-      
-      // Validate
-      if (!name || !email || !message) {
-        showMessage('لطفاً تمام فیلدها را پر کنید.', 'error');
+
+      if (!email) {
+        showMessage('لطفاً ایمیل خود را وارد کنید.', 'error');
         return;
       }
-      
+
       if (!isValidEmail(email)) {
         showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
         return;
       }
-      
-      // Show loading
-      button.textContent = 'در حال ارسال...';
+
+      button.textContent = 'در حال ثبت...';
       button.disabled = true;
-      
+
       try {
-        const response = await fetch('https://formspree.io/f/meebbrpv', {
+        const response = await fetch(newsletterForm.action || '/', {
           method: 'POST',
           body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         });
-        
+
         if (response.ok) {
-          showMessage('پیام شما دریافت شد. به‌زودی پاسخ خواهد گرفت.', 'success');
+          showMessage('ایمیل شما در حلقه‌ی درونی ثبت شد.', 'success');
+          newsletterForm.reset();
+        } else {
+          showMessage('ثبت نام با مشکل مواجه شد. لطفاً دوباره تلاش کنید.', 'error');
+        }
+      } catch (err) {
+        showMessage('خطا در ارتباط با سرور.', 'error');
+      } finally {
+        button.textContent = originalText;
+        button.disabled = false;
+      }
+    });
+  }
+
+  // Contact form (posts to Formspree)
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const button = contactForm.querySelector('button');
+      const originalText = button.textContent;
+
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+
+      if (!name || !email || !message) {
+        showMessage('لطفاً تمام فیلدها را پر کنید.', 'error');
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
+        return;
+      }
+
+      button.textContent = 'در حال ارسال...';
+      button.disabled = true;
+
+      try {
+        const response = await fetch(contactForm.action || '/', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          showMessage('پیام شما دریافت شد. به‌زودی پاسخ خواهید گرفت.', 'success');
           contactForm.reset();
         } else {
           showMessage('خطا در ارسال. لطفاً دوباره تلاش کنید.', 'error');
         }
-      } catch (error) {
+      } catch (err) {
         showMessage('خطا در ارتباط با سرور.', 'error');
       } finally {
         button.textContent = originalText;
