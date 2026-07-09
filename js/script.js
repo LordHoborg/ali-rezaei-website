@@ -143,55 +143,6 @@ function initArchiveFilter() {
 
 // ============ FORMS ============
 function initForms() {
-  // Newsletter form
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const button = newsletterForm.querySelector('button');
-      const originalText = button.textContent;
-      const email = newsletterForm.querySelector('input[type="email"]').value;
-      
-      // Validate email
-      if (!isValidEmail(email)) {
-        showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
-        return;
-      }
-      
-      // Show loading state
-      button.textContent = 'در حال ارسال...';
-      button.disabled = true;
-      
-      try {
-        // ارسال به Formspree
-        const response = await fetch('https://formspree.io/f/xykqqbgp', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            email: email,
-            _subject: 'عضویت در خبرنامه'
-          })
-        });
-        
-        if (response.ok) {
-          showMessage('با تشکر! شما به بایگانی خصوصی اضافه شدید.', 'success');
-          newsletterForm.reset();
-        } else {
-          showMessage('خطا در ارسال. لطفاً دوباره تلاش کنید.', 'error');
-        }
-      } catch (error) {
-        showMessage('خطا در ارتباط با سرور.', 'error');
-      } finally {
-        button.textContent = originalText;
-        button.disabled = false;
-      }
-    });
-  }
-
   // Contact form
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
@@ -201,11 +152,13 @@ function initForms() {
       const button = contactForm.querySelector('button');
       const originalText = button.textContent;
       
-      // Validate form
-      const name = contactForm.querySelector('input[type="text"]').value;
-      const email = contactForm.querySelector('input[type="email"]').value;
-      const message = contactForm.querySelector('textarea').value;
+      // Get form data
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
       
+      // Validate
       if (!name || !email || !message) {
         showMessage('لطفاً تمام فیلدها را پر کنید.', 'error');
         return;
@@ -216,24 +169,17 @@ function initForms() {
         return;
       }
       
-      // Show loading state
+      // Show loading
       button.textContent = 'در حال ارسال...';
       button.disabled = true;
       
       try {
-        // ارسال به Formspree
         const response = await fetch('https://formspree.io/f/meebbrpv', {
           method: 'POST',
+          body: formData,
           headers: {
-            'Content-Type': 'application/json',
             'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            message: message,
-            _subject: 'پیام جدید از سایت'
-          })
+          }
         });
         
         if (response.ok) {
