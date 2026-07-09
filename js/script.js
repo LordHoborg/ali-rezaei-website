@@ -1,8 +1,7 @@
-/* ============================================
+﻿/* ============================================
    ALI REZAEI WEBSITE - PROFESSIONAL JS
    ============================================ */
 
-// ============ INITIALIZATION ============
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
   initMobileMenu();
@@ -11,116 +10,88 @@ document.addEventListener('DOMContentLoaded', () => {
   initArchiveFilter();
   initAccordion();
   initForms();
-  function initForms() {
-    // Newsletter form (posts to configured action)
-    const newsletterForm = document.getElementById('newsletterForm');
-    if (newsletterForm) {
-      newsletterForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+  initJournalToggles();
+  initBackToTop();
+  initEasterEgg();
+  initLazyLoad();
+});
 
-        const button = newsletterForm.querySelector('button');
-        const originalText = button.textContent;
-        const formData = new FormData(newsletterForm);
-        const email = formData.get('email');
+function initHeader() {
+  const header = document.getElementById('header');
+  if (!header) return;
 
-        if (!email) {
-          showMessage('لطفاً ایمیل خود را وارد کنید.', 'error');
-          return;
-        }
+  const toggleHeader = () => {
+    header.classList.toggle('scrolled', window.pageYOffset > 20);
+  };
 
-        if (!isValidEmail(email)) {
-          showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
-          return;
-        }
+  toggleHeader();
+  window.addEventListener('scroll', toggleHeader, { passive: true });
+}
 
-        button.textContent = 'در حال ثبت...';
-        button.disabled = true;
+function initMobileMenu() {
+  const menuToggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
 
-        try {
-          const response = await fetch(newsletterForm.action || '/', {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-          });
+  if (!menuToggle || !nav) return;
 
-          if (response.ok) {
-            showMessage('ایمیل شما در حلقه‌ی درونی ثبت شد.', 'success');
-            newsletterForm.reset();
-          } else {
-            showMessage('ثبت نام با مشکل مواجه شد. لطفاً دوباره تلاش کنید.', 'error');
-          }
-        } catch (err) {
-          showMessage('خطا در ارتباط با سرور.', 'error');
-        } finally {
-          button.textContent = originalText;
-          button.disabled = false;
-        }
-      });
-    }
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+  });
 
-    // Contact form (posts to Formspree)
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-      contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+  nav.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuToggle.classList.remove('active');
+    });
+  });
+}
 
-        const button = contactForm.querySelector('button');
-        const originalText = button.textContent;
+function initSmoothScroll() {
+  const anchors = document.querySelectorAll('a[href^="#"]');
+  anchors.forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const targetElement = document.querySelector(targetId);
+      if (!targetElement) return;
 
-        const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
+      e.preventDefault();
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
 
-        if (!name || !email || !message) {
-          showMessage('لطفاً تمام فیلدها را پر کنید.', 'error');
-          return;
-        }
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal');
+  if (revealElements.length === 0) return;
 
-        if (!isValidEmail(email)) {
-          showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
-          return;
-        }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+  });
 
-        button.textContent = 'در حال ارسال...';
-        button.disabled = true;
+  revealElements.forEach(element => observer.observe(element));
+}
 
-        try {
-          const response = await fetch(contactForm.action || '/', {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (response.ok) {
-            showMessage('پیام شما دریافت شد. به‌زودی پاسخ خواهید گرفت.', 'success');
-            contactForm.reset();
-          } else {
-            showMessage('خطا در ارسال. لطفاً دوباره تلاش کنید.', 'error');
-          }
-        } catch (err) {
-          showMessage('خطا در ارتباط با سرور.', 'error');
-        } finally {
-          button.textContent = originalText;
-          button.disabled = false;
-        }
-      });
-    }
-  }
+function initArchiveFilter() {
   const tabs = document.querySelectorAll('.archive-tab');
   const items = document.querySelectorAll('.archive-item');
-  
+
   if (tabs.length === 0 || items.length === 0) return;
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      // Update active tab
       tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      
       const filter = tab.dataset.filter;
-      
-      // Filter items with animation
+
       items.forEach(item => {
         if (filter === 'all' || item.dataset.cat === filter) {
           item.style.display = '';
@@ -140,88 +111,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 
-// ============ FORMS ============
-function initForms() {
-<<<<<<< HEAD
-  // Newsletter form (posts to configured action)
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', async (e) => {
-=======
-  // Newsletter form
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const button = newsletterForm.querySelector('button');
-      const originalText = button.textContent;
-      const email = newsletterForm.querySelector('input[type="email"]').value;
-      
-      // Validate email
-      if (!isValidEmail(email)) {
-        showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
-        return;
-      }
-      
-      // Show loading state
-      button.textContent = 'در حال ارسال...';
-      button.disabled = true;
-      
-      try {
-        // ارسال به Formspree
-        const response = await fetch('https://formspree.io/f/xykqqbgp', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            email: email,
-            _subject: 'عضویت در خبرنامه'
-          })
-        });
-        
-        if (response.ok) {
-          showMessage('با تشکر! شما به بایگانی خصوصی اضافه شدید.', 'success');
-          newsletterForm.reset();
-        } else {
-          showMessage('خطا در ارسال. لطفاً دوباره تلاش کنید.', 'error');
-        }
-      } catch (error) {
-        showMessage('خطا در ارتباط با سرور.', 'error');
-      } finally {
-        button.textContent = originalText;
-        button.disabled = false;
-      }
+function initAccordion() {
+  const accordionItems = document.querySelectorAll('.accordion-item');
+  if (accordionItems.length === 0) return;
+
+  accordionItems.forEach(item => {
+    const header = item.querySelector('.accordion-header');
+    if (!header) return;
+
+    header.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      accordionItems.forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
     });
-  }
+  });
+}
 
-  // Contact form
+function initForms() {
+  const newsletterForm = document.getElementById('newsletterForm');
   const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
->>>>>>> parent of 08fc5ed (اصلاح فرم تماس)
-      e.preventDefault();
 
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
       const button = newsletterForm.querySelector('button');
-      const originalText = button.textContent;
-<<<<<<< HEAD
+      const originalText = button ? button.textContent : 'ارسال';
       const formData = new FormData(newsletterForm);
       const email = formData.get('email');
 
       if (!email) {
         showMessage('لطفاً ایمیل خود را وارد کنید.', 'error');
-=======
-      
-      // Validate form
-      const name = contactForm.querySelector('input[type="text"]').value;
-      const email = contactForm.querySelector('input[type="email"]').value;
-      const message = contactForm.querySelector('textarea').value;
-      
-      if (!name || !email || !message) {
-        showMessage('لطفاً تمام فیلدها را پر کنید.', 'error');
->>>>>>> parent of 08fc5ed (اصلاح فرم تماس)
         return;
       }
 
@@ -229,37 +148,17 @@ function initForms() {
         showMessage('لطفاً یک ایمیل معتبر وارد کنید.', 'error');
         return;
       }
-<<<<<<< HEAD
 
-      button.textContent = 'در حال ثبت...';
-=======
-      
-      // Show loading state
-      button.textContent = 'در حال ارسال...';
->>>>>>> parent of 08fc5ed (اصلاح فرم تماس)
-      button.disabled = true;
+      if (button) {
+        button.textContent = 'در حال ثبت...';
+        button.disabled = true;
+      }
 
       try {
-<<<<<<< HEAD
         const response = await fetch(newsletterForm.action || '/', {
           method: 'POST',
           body: formData,
-          headers: { 'Accept': 'application/json' }
-=======
-        // ارسال به Formspree
-        const response = await fetch('https://formspree.io/f/meebbrpv', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            message: message,
-            _subject: 'پیام جدید از سایت'
-          })
->>>>>>> parent of 08fc5ed (اصلاح فرم تماس)
+          headers: { 'Accept': 'application/json' },
         });
 
         if (response.ok) {
@@ -271,21 +170,19 @@ function initForms() {
       } catch (err) {
         showMessage('خطا در ارتباط با سرور.', 'error');
       } finally {
-        button.textContent = originalText;
-        button.disabled = false;
+        if (button) {
+          button.textContent = originalText;
+          button.disabled = false;
+        }
       }
     });
   }
 
-  // Contact form (posts to Formspree)
-  const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       const button = contactForm.querySelector('button');
-      const originalText = button.textContent;
-
+      const originalText = button ? button.textContent : 'ارسال';
       const formData = new FormData(contactForm);
       const name = formData.get('name');
       const email = formData.get('email');
@@ -301,14 +198,16 @@ function initForms() {
         return;
       }
 
-      button.textContent = 'در حال ارسال...';
-      button.disabled = true;
+      if (button) {
+        button.textContent = 'در حال ارسال...';
+        button.disabled = true;
+      }
 
       try {
         const response = await fetch(contactForm.action || '/', {
           method: 'POST',
           body: formData,
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Accept': 'application/json' },
         });
 
         if (response.ok) {
@@ -320,26 +219,48 @@ function initForms() {
       } catch (err) {
         showMessage('خطا در ارتباط با سرور.', 'error');
       } finally {
-        button.textContent = originalText;
-        button.disabled = false;
+        if (button) {
+          button.textContent = originalText;
+          button.disabled = false;
+        }
       }
     });
   }
 }
 
-// ============ EMAIL VALIDATION ============
+function initJournalToggles() {
+  const toggles = document.querySelectorAll('.journal-toggle');
+  if (toggles.length === 0) return;
+
+  toggles.forEach(toggle => {
+    const targetId = toggle.getAttribute('aria-controls');
+    const target = targetId ? document.getElementById(targetId) : null;
+    if (!target) return;
+
+    toggle.addEventListener('click', () => {
+      const journalItem = toggle.closest('.journal-item');
+      const isExpanded = journalItem ? !journalItem.classList.contains('expanded') : false;
+
+      if (!journalItem) return;
+
+      journalItem.classList.toggle('expanded', isExpanded);
+      toggle.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      target.setAttribute('aria-hidden', isExpanded ? 'false' : 'true');
+      target.style.maxHeight = isExpanded ? `${target.scrollHeight}px` : '0px';
+      toggle.textContent = isExpanded ? 'بستن مطلب' : 'ادامه مطلب';
+    });
+  });
+}
+
 function isValidEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 }
 
-// ============ SHOW MESSAGE ============
 function showMessage(text, type = 'info') {
-  // Remove existing message
   const existing = document.querySelector('.toast-message');
   if (existing) existing.remove();
-  
-  // Create message element
+
   const message = document.createElement('div');
   message.className = `toast-message toast-${type}`;
   message.textContent = text;
@@ -357,19 +278,15 @@ function showMessage(text, type = 'info') {
     animation: slideDown 0.3s ease;
     font-family: 'Vazirmatn', sans-serif;
   `;
-  
+
   document.body.appendChild(message);
-  
-  // Remove after 4 seconds
   setTimeout(() => {
     message.style.animation = 'slideUp 0.3s ease';
     setTimeout(() => message.remove(), 300);
   }, 4000);
 }
 
-// ============ BACK TO TOP BUTTON ============
 function initBackToTop() {
-  // Create button
   const button = document.createElement('button');
   button.innerHTML = '↑';
   button.className = 'back-to-top';
@@ -392,43 +309,34 @@ function initBackToTop() {
     box-shadow: 0 4px 15px rgba(139,111,71,0.3);
     z-index: 99;
   `;
-  
+
   document.body.appendChild(button);
-  
-  // Show/hide on scroll
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-      button.style.opacity = '1';
-      button.style.visibility = 'visible';
-    } else {
-      button.style.opacity = '0';
-      button.style.visibility = 'hidden';
-    }
-  }, { passive: true });
-  
-  // Scroll to top on click
+
+  const updateVisibility = () => {
+    const visible = window.pageYOffset > 300;
+    button.style.opacity = visible ? '1' : '0';
+    button.style.visibility = visible ? 'visible' : 'hidden';
+  };
+
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  updateVisibility();
+
   button.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-  
-  // Hover effect
+
   button.addEventListener('mouseenter', () => {
     button.style.background = 'var(--gold-dust)';
     button.style.transform = 'translateY(-3px)';
   });
-  
+
   button.addEventListener('mouseleave', () => {
     button.style.background = 'var(--bronze)';
     button.style.transform = 'translateY(0)';
   });
 }
 
-// ============ EASTER EGG ============
 function initEasterEgg() {
-  // Create hidden symbol
   const symbol = document.createElement('button');
   symbol.className = 'hidden-symbol';
   symbol.setAttribute('aria-label', 'نماد پنهان');
@@ -437,8 +345,7 @@ function initEasterEgg() {
       <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="0.5"/>
       <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="0.5"/>
       <path d="M20 2 L20 38 M2 20 L38 20" stroke="currentColor" stroke-width="0.3"/>
-      <text x="20" y="24" text-anchor="middle" font-size="8" fill="currentColor"
-            font-family="serif" font-style="italic">ع</text>
+      <text x="20" y="24" text-anchor="middle" font-size="8" fill="currentColor" font-family="serif" font-style="italic">ع</text>
     </svg>
   `;
   symbol.style.cssText = `
@@ -455,32 +362,28 @@ function initEasterEgg() {
     border: none;
     padding: 0;
   `;
-  
+
   document.body.appendChild(symbol);
-  
   let clicks = 0;
-  
+
   symbol.addEventListener('click', () => {
-    clicks++;
-    
+    clicks += 1;
     if (clicks >= 3) {
       showManuscript();
       clicks = 0;
     }
   });
-  
+
   symbol.addEventListener('mouseenter', () => {
     symbol.style.opacity = '0.4';
   });
-  
+
   symbol.addEventListener('mouseleave', () => {
     symbol.style.opacity = '0.08';
   });
 }
 
-// ============ MANUSCRIPT MODAL ============
 function showManuscript() {
-  // Create modal
   const modal = document.createElement('div');
   modal.className = 'manuscript-modal';
   modal.style.cssText = `
@@ -495,7 +398,7 @@ function showManuscript() {
     padding: 2rem;
     animation: fadeIn 0.5s;
   `;
-  
+
   modal.innerHTML = `
     <div style="
       max-width: 600px;
@@ -524,7 +427,6 @@ function showManuscript() {
         font-weight: 700;
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       ">ع</div>
-      
       <div style="
         font-size: 0.65rem;
         letter-spacing: 0.3em;
@@ -533,7 +435,6 @@ function showManuscript() {
         text-align: center;
         margin-bottom: 1rem;
       ">دست‌نوشته‌ی گشوده‌شده · قطعه‌ی شماره‌ی ۰۱</div>
-      
       <h3 style="
         font-size: 1.8rem;
         color: var(--stone);
@@ -541,7 +442,6 @@ function showManuscript() {
         margin-bottom: 2rem;
         font-weight: 500;
       ">مُهر کاتب خاموش</h3>
-      
       <p style="
         font-size: 1.15rem;
         color: rgba(42, 36, 25, 0.85);
@@ -555,7 +455,6 @@ function showManuscript() {
         کسی که آن را خواند، دیگر همان نبود.
         و کسی که آن را نوشت، هرگز بازنگشت.»
       </p>
-      
       <p style="
         font-size: 0.75rem;
         letter-spacing: 0.2em;
@@ -563,7 +462,6 @@ function showManuscript() {
         text-align: center;
         margin-bottom: 2rem;
       ">— بازیافته از حاشیه‌ی نسخه‌ی ۱۲۴۷ · تبریز</p>
-      
       <button class="manuscript-close" style="
         width: 100%;
         padding: 0.8rem;
@@ -579,40 +477,30 @@ function showManuscript() {
       ">مهر و موم کردن سند</button>
     </div>
   `;
-  
+
   document.body.appendChild(modal);
-  
-  // Close on button click
-  modal.querySelector('.manuscript-close').addEventListener('click', () => {
+
+  const closeModal = () => {
     modal.style.animation = 'fadeOut 0.3s';
     setTimeout(() => modal.remove(), 300);
-  });
-  
-  // Close on background click
+    document.removeEventListener('keydown', escHandler);
+  };
+
+  modal.querySelector('.manuscript-close').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.animation = 'fadeOut 0.3s';
-      setTimeout(() => modal.remove(), 300);
-    }
+    if (e.target === modal) closeModal();
   });
-  
-  // Close on ESC key
+
   const escHandler = (e) => {
-    if (e.key === 'Escape') {
-      modal.style.animation = 'fadeOut 0.3s';
-      setTimeout(() => modal.remove(), 300);
-      document.removeEventListener('keydown', escHandler);
-    }
+    if (e.key === 'Escape') closeModal();
   };
   document.addEventListener('keydown', escHandler);
 }
 
-// ============ LAZY LOADING ============
 function initLazyLoad() {
   const images = document.querySelectorAll('img[data-src]');
-  
   if (images.length === 0) return;
-  
+
   const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -623,57 +511,27 @@ function initLazyLoad() {
       }
     });
   });
-  
+
   images.forEach(img => imageObserver.observe(img));
 }
 
-// ============ ANIMATIONS CSS ============
 const style = document.createElement('style');
 style.textContent = `
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  
   @keyframes fadeOut {
     from { opacity: 1; }
     to { opacity: 0; }
   }
-  
   @keyframes slideUp {
-    from { 
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to { 
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  
   @keyframes slideDown {
-    from { 
-      opacity: 0;
-      transform: translate(50%, -20px);
-    }
-    to { 
-      opacity: 1;
-      transform: translate(50%, 0);
-    }
+    from { opacity: 0; transform: translate(50%, -20px); }
+    to { opacity: 1; transform: translate(50%, 0); }
   }
 `;
 document.head.appendChild(style);
-// ============ ACCORDION ============
-function initAccordion() {
-  const accordionItems = document.querySelectorAll('.accordion-item');
-  if (accordionItems.length === 0) return;
-
-  accordionItems.forEach(item => {
-    const header = item.querySelector('.accordion-header');
-    header.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      accordionItems.forEach(i => i.classList.remove('active'));
-      if (!isActive) item.classList.add('active');
-    });
-  });
-}
