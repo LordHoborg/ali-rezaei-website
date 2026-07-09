@@ -163,13 +163,32 @@ function initForms() {
       button.textContent = 'در حال ارسال...';
       button.disabled = true;
       
-      // Simulate API call (replace with real API)
-      setTimeout(() => {
-        showMessage('با تشکر! شما به بایگانی خصوصی اضافه شدید.', 'success');
-        newsletterForm.reset();
+      try {
+        // ارسال به Formspree
+        const response = await fetch('https://formspree.io/f/xykqqbgp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            _subject: 'عضویت در خبرنامه'
+          })
+        });
+        
+        if (response.ok) {
+          showMessage('با تشکر! شما به بایگانی خصوصی اضافه شدید.', 'success');
+          newsletterForm.reset();
+        } else {
+          showMessage('خطا در ارسال. لطفاً دوباره تلاش کنید.', 'error');
+        }
+      } catch (error) {
+        showMessage('خطا در ارتباط با سرور.', 'error');
+      } finally {
         button.textContent = originalText;
         button.disabled = false;
-      }, 1500);
+      }
     });
   }
 
@@ -201,13 +220,34 @@ function initForms() {
       button.textContent = 'در حال ارسال...';
       button.disabled = true;
       
-      // Simulate API call (replace with real API)
-      setTimeout(() => {
-        showMessage('پیام شما دریافت شد. به‌زودی پاسخ خواهد گرفت.', 'success');
-        contactForm.reset();
+      try {
+        // ارسال به Formspree
+        const response = await fetch('https://formspree.io/f/meebbrpv', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message,
+            _subject: 'پیام جدید از سایت'
+          })
+        });
+        
+        if (response.ok) {
+          showMessage('پیام شما دریافت شد. به‌زودی پاسخ خواهد گرفت.', 'success');
+          contactForm.reset();
+        } else {
+          showMessage('خطا در ارسال. لطفاً دوباره تلاش کنید.', 'error');
+        }
+      } catch (error) {
+        showMessage('خطا در ارتباط با سرور.', 'error');
+      } finally {
         button.textContent = originalText;
         button.disabled = false;
-      }, 1500);
+      }
     });
   }
 }
