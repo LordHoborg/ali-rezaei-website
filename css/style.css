@@ -30,12 +30,19 @@ html {
 }
 
 body {
-  font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+  font-family: 'Noto Naskh Arabic', 'Vazirmatn', 'Tahoma', sans-serif;
   background: var(--parchment);
   color: var(--ink);
   line-height: 1.8;
   overflow-x: hidden;
   position: relative;
+}
+
+/* ============ TYPOGRAPHY - HEADINGS ============ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lalezar', 'Vazirmatn', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 /* ============ TEXTURE OVERLAY ============ */
@@ -96,7 +103,7 @@ main, header, footer {
 
 .logo {
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--stone);
   text-decoration: none;
   display: flex;
@@ -242,7 +249,7 @@ main, header, footer {
 
 .hero-text h1 {
   font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
+  font-weight: 400;
   color: var(--stone);
   line-height: 0.9;
   margin-bottom: 2.5rem;
@@ -385,7 +392,7 @@ section {
 
 .section-title {
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 700;
+  font-weight: 400;
   color: var(--stone);
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
@@ -518,7 +525,7 @@ section {
   font-size: 1.4rem;
   color: var(--stone);
   margin-bottom: 0.75rem;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .book-info .genre {
@@ -748,7 +755,7 @@ section {
 .timeline-year {
   font-size: 1.6rem;
   color: var(--bronze);
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 0.75rem;
   letter-spacing: 0.05em;
 }
@@ -756,7 +763,7 @@ section {
 .timeline-title {
   font-size: 1rem;
   color: var(--stone);
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 0.75rem;
 }
 
