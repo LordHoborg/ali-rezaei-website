@@ -30,7 +30,7 @@ html {
 }
 
 body {
-  font-family: 'Noto Naskh Arabic', 'Vazirmatn', 'Tahoma', sans-serif;
+  font-family: 'Vazirmatn', 'Noto Naskh Arabic', 'Tahoma', sans-serif;
   background: var(--parchment);
   color: var(--ink);
   line-height: 1.8;
@@ -43,6 +43,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Lalezar', 'Vazirmatn', sans-serif;
   font-weight: 400;
   letter-spacing: -0.02em;
+}
+
+/* ============ BODY TEXT PROFESSIONAL ============ */
+p, .book-info p, .about-text p, .timeline-desc, .note-content p {
+  font-family: 'Vazirmatn', 'Noto Naskh Arabic', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
 }
 
 /* ============ TEXTURE OVERLAY ============ */
