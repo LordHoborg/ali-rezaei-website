@@ -45,6 +45,25 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
+/* Shared touch targets, including buttons created by script.js. */
+button, input, textarea {
+  min-width: 48px;
+  min-height: 48px;
+}
+
+a[href] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+:where(a, button, input, textarea):focus-visible {
+  outline: 3px solid var(--bronze);
+  outline-offset: 4px;
+}
+
 /* ============ BODY TEXT PROFESSIONAL ============ */
 p, .book-info p, .about-text p, .timeline-desc, .note-content p {
   font-family: 'Vazirmatn', 'Noto Naskh Arabic', sans-serif;
@@ -179,7 +198,7 @@ main, header, footer {
 
 .nav {
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -213,6 +232,29 @@ main, header, footer {
 
 .nav a:hover::before {
   width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--bronze);
+  border-radius: 4px;
+  color: var(--stone);
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: currentColor;
 }
 
 /* ============ HERO PROFESSIONAL ============ */
@@ -300,6 +342,14 @@ main, header, footer {
   flex: 1;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--bronze), transparent);
+}
+
+.hero-img {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-inline: auto;
 }
 
 .hero-portrait {
@@ -934,7 +984,7 @@ section {
   font-family: 'Courier New', monospace;
 }
 
-.archive-item h4 {
+.archive-item h3 {
   font-size: 1.4rem;
   color: var(--parchment);
   font-weight: 500;
@@ -1155,6 +1205,31 @@ section {
   justify-content: center;
 }
 
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.form-field label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.newsletter-form {
+  align-items: flex-end;
+}
+
+.newsletter-form .form-field {
+  flex: 1;
+  width: 100%;
+}
+
+.form-field input, .form-field textarea {
+  width: 100%;
+}
+
 .newsletter-form input {
   flex: 1;
   padding: 1.25rem 1.5rem;
@@ -1356,7 +1431,7 @@ footer {
   line-height: 2;
 }
 
-.footer-col h4 {
+.footer-col h2 {
   font-size: 0.75rem;
   letter-spacing: 0.3em;
   color: var(--gold-dust);
@@ -1397,6 +1472,31 @@ footer {
 
 /* ============ RESPONSIVE PROFESSIONAL ============ */
 @media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav.open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: var(--parchment);
+    flex-direction: column;
+    padding: 1.5rem;
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
+    gap: 1.5rem;
+    border-bottom: 2px solid rgba(139,111,71,0.2);
+    box-shadow: 0 10px 30px rgba(28,25,20,0.1);
+  }
+
+
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 4rem;
@@ -1441,28 +1541,6 @@ footer {
     padding: 1rem;
   }
   
-  .nav {
-    display: none;
-  }
-  
-  .menu-toggle {
-    display: flex;
-  }
-  
-  .nav.open {
-    display: flex;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    background: var(--parchment);
-    flex-direction: column;
-    padding: 2rem;
-    gap: 1.5rem;
-    border-bottom: 2px solid rgba(139,111,71,0.2);
-    box-shadow: 0 10px 30px rgba(28,25,20,0.1);
-  }
-  
   section {
     padding: 5rem 1.5rem;
   }
@@ -1481,6 +1559,7 @@ footer {
   }
   
   .newsletter-form {
+    align-items: stretch;
     flex-direction: column;
   }
   

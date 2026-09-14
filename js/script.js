@@ -35,15 +35,25 @@ function initMobileMenu() {
   if (!menuToggle || !nav) return;
 
   menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    menuToggle.classList.toggle('active');
+    const isOpen = nav.classList.toggle('open');
+    menuToggle.classList.toggle('active', isOpen);
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
   nav.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', () => {
       nav.classList.remove('open');
       menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
     });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.focus();
+    }
   });
 }
 
@@ -351,9 +361,9 @@ function initEasterEgg() {
   symbol.style.cssText = `
     position: fixed;
     bottom: 2rem;
-    left: 2rem;
-    width: 40px;
-    height: 40px;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
     opacity: 0.08;
     cursor: pointer;
     transition: opacity 0.7s;
