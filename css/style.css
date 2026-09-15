@@ -347,9 +347,11 @@ main, header, footer {
 .hero-img {
   display: block;
   width: 100%;
-  max-width: 400px;
+  max-width: 680px;
   height: auto;
   margin-inline: auto;
+  border-radius: 8px;
+  box-shadow: 0 16px 48px rgba(28,25,20,0.16);
 }
 
 .hero-portrait {

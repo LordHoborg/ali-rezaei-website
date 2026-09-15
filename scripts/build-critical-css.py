@@ -1,17 +1,18 @@
-"""Refresh inline first-paint styles from the shared stylesheet (no dependencies)."""
+"""Inline shared styles and local font declarations into every page (no dependencies)."""
 
 from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-css = (ROOT / "css/style.css").read_text(encoding="utf-8")
-# Base, header and hero styles, plus responsive layout rules. Keep the full
-# stylesheet as the source of truth; never edit the generated HTML block.
-critical = css[:css.index(".hero-portrait {")]
-responsive_start = css.index("@media (max-width: 1024px)")
-responsive_end = css.index("/* ============ ANIMATIONS", responsive_start)
-critical += css[responsive_start:responsive_end]
-critical = re.sub(r"/\*.*?\*/", "", critical, flags=re.S)
+# Keep both CSS files as the source of truth. Inlining the complete small
+# stylesheet removes the external CSS request and works without JavaScript.
+css = "\n".join(
+    (ROOT / path).read_text(encoding="utf-8")
+    for path in ("css/fonts.css", "css/style.css")
+)
+if "@import" in css or "</style" in css.lower():
+    raise ValueError("Inline CSS must not import stylesheets or close its style element")
+critical = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
 critical = re.sub(r"\s+", " ", critical).strip()
 block = (
     '<!-- critical-css:start -->\n<style id="critical-css">'
