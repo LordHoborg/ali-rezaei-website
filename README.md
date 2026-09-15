@@ -24,5 +24,6 @@ Prompt: a Persian author social banner with parchment and bronze colors, an
 aged book and fountain pen, the name «علی رضائی», subtitle «نویسنده و پژوهشگر»,
 and domain `alirezaeilegacy.ir`, with generous margins and no watermark.
 
-The fantasy thriller essay (۲۲ شهریور ۱۴۰۵ / 2026-09-13) is the final journal
-entry at `/#fantasy-thriller-ingredients`, using the existing expand/collapse UI.
+The fantasy thriller essay (۲۲ شهریور ۱۴۰۵ / 2026-09-13) is the newest journal
+entry, shown first at `/#fantasy-thriller-ingredients`, using the existing
+expand/collapse UI. Keep journal entries in descending publication-date order.
